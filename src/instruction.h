@@ -1,14 +1,14 @@
 #ifndef ATOM_NES_INSTRUCTION_H
 #define ATOM_NES_INSTRUCTION_H
 
-#include "addressing_mode.h"
+#include "AddressingMode.h"
 #include "Operation.h"
 
 struct Instruction {
   uint8_t opcode;
   
   Operation opcode_type;
-  addressing_mode addr_mode_type;
+  AddressingMode addr_mode_type;
   
   uint8_t len;
   uint8_t cycles;

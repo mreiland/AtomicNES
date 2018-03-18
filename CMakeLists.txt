@@ -6,7 +6,7 @@ add_subdirectory(lib/fmt)
 set(COMPILER_FEATURES cxx_std_17)
 
 set(ANES_SOURCES
-  src/addressing_mode.h
+  src/AddressingMode.h
   src/cpu.h
   src/decode_info.h
   src/executor.cpp src/executor.h

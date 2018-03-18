@@ -2,7 +2,7 @@
 #define ATOM_NES_DECODE_INFO_H
 
 #include "Operation.h"
-#include "addressing_mode.h"
+#include "AddressingMode.h"
 #include "instruction.h"
 
 struct decode_info {
