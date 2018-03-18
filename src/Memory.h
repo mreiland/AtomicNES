@@ -3,7 +3,7 @@
 
 #include <array>
 
-class memory {
+class Memory {
 public:
   uint8_t get();
   uint8_t get16();

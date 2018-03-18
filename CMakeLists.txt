@@ -12,7 +12,7 @@ set(ANES_SOURCES
   src/executor.cpp src/executor.h
   src/Instruction.h
   src/instructions.cpp src/instructions.h
-  src/memory.cpp src/memory.h
+  src/Memory.cpp src/Memory.h
 
 
   src/Operation.h

@@ -3,14 +3,14 @@
 
 #include "Cpu.h"
 #include "DecodeInfo.h"
-#include "memory.h"
+#include "Memory.h"
 
 namespace executor {
-  void restart(Cpu *, memory *);
-  void power_on(Cpu *, memory *);
+  void restart(Cpu *, Memory *);
+  void power_on(Cpu *, Memory *);
   
-  DecodeInfo fetch_and_decode(Cpu *, memory *);
-  void execute(Cpu *, memory *, DecodeInfo);
+  DecodeInfo fetch_and_decode(Cpu *, Memory *);
+  void execute(Cpu *, Memory *, DecodeInfo);
 }
 
 #endif

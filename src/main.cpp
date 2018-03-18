@@ -8,7 +8,7 @@
 
 #include "Cpu.h"
 #include "executor.h"
-#include "memory.h"
+#include "Memory.h"
 
 int main() {
   instructions::initialize();
@@ -17,7 +17,7 @@ int main() {
   
   Cpu cpu;
   DecodeInfo decoded;
-  memory mem;
+  Memory mem;
   
   executor::power_on(&cpu, &mem);
   

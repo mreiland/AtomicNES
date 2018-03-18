@@ -1,15 +1,15 @@
 #include "executor.h"
 
 namespace executor {
-  void restart(Cpu *cpu, memory *mem) {
+  void restart(Cpu *cpu, Memory *mem) {
   }
-  void power_on(Cpu *cpu, memory *mem) {
+  void power_on(Cpu *cpu, Memory *mem) {
   }
   
   // decode_info will need to carry the instruction around with it, should just use a pointer
   // to the actual instruction to minimize copying
   //
-  DecodeInfo fetch_and_decode(Cpu *cpu, memory *men) {
+  DecodeInfo fetch_and_decode(Cpu *cpu, Memory *men) {
     DecodeInfo info;
     
     // examine memory, use stack pointer to grab next operation
@@ -19,6 +19,6 @@ namespace executor {
     
     return info;
   }
-  void execute(Cpu *cpu, memory *mem, DecodeInfo decoded) {
+  void execute(Cpu *cpu, Memory *mem, DecodeInfo decoded) {
   }
 }
