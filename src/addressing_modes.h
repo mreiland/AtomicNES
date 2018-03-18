@@ -9,7 +9,7 @@ enum class addr_mode {
   ABS, ABSX, ABSY, IND, INDX, INDY
 };
 
-inline std::string addr_mode2string(addr_mode adm) {
+inline std::string to_string(addr_mode adm) {
   switch(adm) {
     case addr_mode::Accum: return "Accumulator";
     case addr_mode::IMM:   return "Immediate";
@@ -28,7 +28,7 @@ inline std::string addr_mode2string(addr_mode adm) {
   return "";
 }
 
-inline addr_mode string2addr_mode(std::string str) {
+inline addr_mode to_addr_mode(std::string str) {
   if(str == "Accumulator") return addr_mode::Accum;
   if(str == "Immediate")   return addr_mode::IMM;
   if(str == "Implied")     return addr_mode::Impl;
