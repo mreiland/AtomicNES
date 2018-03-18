@@ -4,7 +4,7 @@
 #include "instruction.h"
 
 namespace instructions {
-  Instruction get_instruction(int opcode_value);
+  Instruction *get_instruction(int opcode_value);
   void initialize();
 }
 

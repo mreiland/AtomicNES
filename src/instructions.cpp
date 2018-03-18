@@ -31,8 +31,8 @@ namespace {
 }
 
 namespace instructions {
-  Instruction get_instruction(int opcode_value) {
-    return instr_tbl[opcode_value];
+  Instruction *get_instruction(int opcode_value) {
+    return &instr_tbl[opcode_value];
   }
   void initialize() {
     instr_tbl[0x69] = make_instruction(0x69,opcode::ADC, addressing_mode::IMM,   2, 2, 0);
