@@ -11,7 +11,7 @@ enum class opcode {
   RTS, SBC, SEC, SED, SEI, STA, STX, STY, TAX, TAY, TSX, TXA, TXS, TYA
 };
 
-std::string OPC2string(opcode opc) {
+inline std::string OPC2string(opcode opc) {
   switch(opc) {
     case opcode::ADC: return "ADC";
     case opcode::AND: return "AND";
@@ -73,7 +73,7 @@ std::string OPC2string(opcode opc) {
   return "";
 }
 
-opcode string2OPC(std::string str) {
+inline opcode string2OPC(std::string str) {
   if(str == "ADC") return opcode::ADC;
   if(str == "AND") return opcode::AND;
   if(str == "ASL") return opcode::ASL;
