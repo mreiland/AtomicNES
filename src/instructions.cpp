@@ -29,191 +29,191 @@ namespace instructions {
     return instructions_array[opcode_value];
   }
   void initialize() {
-    instructions_array[0x69] = make_instruction(0x69,opcode::ADC, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0x65] = make_instruction(0x65,opcode::ADC, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x75] = make_instruction(0x75,opcode::ADC, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0x6D] = make_instruction(0x6D,opcode::ADC, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0x7D] = make_instruction(0x7D,opcode::ADC, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0x79] = make_instruction(0x79,opcode::ADC, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0x61] = make_instruction(0x61,opcode::ADC, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0x71] = make_instruction(0x71,opcode::ADC, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0x69] = make_instruction(0x69,opcode::ADC, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0x65] = make_instruction(0x65,opcode::ADC, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x75] = make_instruction(0x75,opcode::ADC, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0x6D] = make_instruction(0x6D,opcode::ADC, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0x7D] = make_instruction(0x7D,opcode::ADC, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0x79] = make_instruction(0x79,opcode::ADC, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0x61] = make_instruction(0x61,opcode::ADC, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0x71] = make_instruction(0x71,opcode::ADC, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0x29] = make_instruction(0x29,opcode::AND, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0x25] = make_instruction(0x25,opcode::AND, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x35] = make_instruction(0x35,opcode::AND, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0x2D] = make_instruction(0x2D,opcode::AND, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0x3D] = make_instruction(0x3D,opcode::AND, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0x39] = make_instruction(0x39,opcode::AND, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0x21] = make_instruction(0x21,opcode::AND, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0x31] = make_instruction(0x31,opcode::AND, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0x29] = make_instruction(0x29,opcode::AND, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0x25] = make_instruction(0x25,opcode::AND, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x35] = make_instruction(0x35,opcode::AND, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0x2D] = make_instruction(0x2D,opcode::AND, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0x3D] = make_instruction(0x3D,opcode::AND, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0x39] = make_instruction(0x39,opcode::AND, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0x21] = make_instruction(0x21,opcode::AND, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0x31] = make_instruction(0x31,opcode::AND, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0x0A] = make_instruction(0x0A,opcode::ASL, addr_mode::Accum,   1, 2, 0);
-    instructions_array[0x06] = make_instruction(0x06,opcode::ASL, addr_mode::ZP,      2, 5, 0);
-    instructions_array[0x16] = make_instruction(0x16,opcode::ASL, addr_mode::ZPX,     2, 6, 0);
-    instructions_array[0x0E] = make_instruction(0x0E,opcode::ASL, addr_mode::ABS,     3, 6, 0);
-    instructions_array[0x1E] = make_instruction(0x1E,opcode::ASL, addr_mode::ABSX,    3, 7, 0);
+    instructions_array[0x0A] = make_instruction(0x0A,opcode::ASL, addr_mode::Accum, 1, 2, 0);
+    instructions_array[0x06] = make_instruction(0x06,opcode::ASL, addr_mode::ZP,    2, 5, 0);
+    instructions_array[0x16] = make_instruction(0x16,opcode::ASL, addr_mode::ZPX,   2, 6, 0);
+    instructions_array[0x0E] = make_instruction(0x0E,opcode::ASL, addr_mode::ABS,   3, 6, 0);
+    instructions_array[0x1E] = make_instruction(0x1E,opcode::ASL, addr_mode::ABSX,  3, 7, 0);
 
-    instructions_array[0x90] = make_instruction(0x90,opcode::BCC, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instructions_array[0xB0] = make_instruction(0xB0,opcode::BCS, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instructions_array[0xF0] = make_instruction(0xF0,opcode::BEQ, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0x90] = make_instruction(0x90,opcode::BCC, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0xB0] = make_instruction(0xB0,opcode::BCS, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0xF0] = make_instruction(0xF0,opcode::BEQ, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
 
-    instructions_array[0x24] = make_instruction(0x24,opcode::BIT, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x2C] = make_instruction(0x2C,opcode::BIT, addr_mode::ABS,     3, 4, 0);
+    instructions_array[0x24] = make_instruction(0x24,opcode::BIT, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x2C] = make_instruction(0x2C,opcode::BIT, addr_mode::ABS,   3, 4, 0);
 
-    instructions_array[0x30] = make_instruction(0x30,opcode::BMI, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instructions_array[0xD0] = make_instruction(0xD0,opcode::BNE, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instructions_array[0x10] = make_instruction(0x10,opcode::BPL, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0x30] = make_instruction(0x30,opcode::BMI, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0xD0] = make_instruction(0xD0,opcode::BNE, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0x10] = make_instruction(0x10,opcode::BPL, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
     
-    instructions_array[0x00] = make_instruction(0x00,opcode::BRK, addr_mode::Implied, 1, 7, 0);
+    instructions_array[0x00] = make_instruction(0x00,opcode::BRK, addr_mode::Impl,  1, 7, 0);
 
-    instructions_array[0x50] = make_instruction(0x50,opcode::BVC, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instructions_array[0x70] = make_instruction(0x70,opcode::BVS, addr_mode::Rel,     2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0x50] = make_instruction(0x50,opcode::BVC, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instructions_array[0x70] = make_instruction(0x70,opcode::BVS, addr_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
 
-    instructions_array[0x18] = make_instruction(0x18,opcode::CLC, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0xD8] = make_instruction(0xD8,opcode::CLD, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0x58] = make_instruction(0x58,opcode::CLI, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0xB8] = make_instruction(0xB8,opcode::CLV, addr_mode::Implied, 1, 2, 0);
+    instructions_array[0x18] = make_instruction(0x18,opcode::CLC, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0xD8] = make_instruction(0xD8,opcode::CLD, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0x58] = make_instruction(0x58,opcode::CLI, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0xB8] = make_instruction(0xB8,opcode::CLV, addr_mode::Impl,  1, 2, 0);
 
-    instructions_array[0xC9] = make_instruction(0xC9,opcode::CMP, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xC5] = make_instruction(0xC5,opcode::CMP, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xD5] = make_instruction(0xD5,opcode::CMP, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0xCD] = make_instruction(0xCD,opcode::CMP, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0xDD] = make_instruction(0xDD,opcode::CMP, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0xD9] = make_instruction(0xD9,opcode::CMP, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0xC1] = make_instruction(0xC1,opcode::CMP, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0xD1] = make_instruction(0xD1,opcode::CMP, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0xC9] = make_instruction(0xC9,opcode::CMP, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xC5] = make_instruction(0xC5,opcode::CMP, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xD5] = make_instruction(0xD5,opcode::CMP, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0xCD] = make_instruction(0xCD,opcode::CMP, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0xDD] = make_instruction(0xDD,opcode::CMP, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0xD9] = make_instruction(0xD9,opcode::CMP, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0xC1] = make_instruction(0xC1,opcode::CMP, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0xD1] = make_instruction(0xD1,opcode::CMP, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0xE0] = make_instruction(0xE0,opcode::CPX, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xE4] = make_instruction(0xE4,opcode::CPX, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xEC] = make_instruction(0xEC,opcode::CPX, addr_mode::ABS,     3, 4, 0);
+    instructions_array[0xE0] = make_instruction(0xE0,opcode::CPX, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xE4] = make_instruction(0xE4,opcode::CPX, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xEC] = make_instruction(0xEC,opcode::CPX, addr_mode::ABS,   3, 4, 0);
 
-    instructions_array[0xC0] = make_instruction(0xC0,opcode::CPY, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xC4] = make_instruction(0xC4,opcode::CPY, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xCC] = make_instruction(0xCC,opcode::CPY, addr_mode::ABS,     3, 4, 0);
+    instructions_array[0xC0] = make_instruction(0xC0,opcode::CPY, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xC4] = make_instruction(0xC4,opcode::CPY, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xCC] = make_instruction(0xCC,opcode::CPY, addr_mode::ABS,   3, 4, 0);
 
-    instructions_array[0xC6] = make_instruction(0xC6,opcode::DEC, addr_mode::ZP,      2, 5, 0);
-    instructions_array[0xD6] = make_instruction(0xD6,opcode::DEC, addr_mode::ZPX,     2, 6, 0);
-    instructions_array[0xCE] = make_instruction(0xCE,opcode::DEC, addr_mode::ABS,     3, 6, 0);
-    instructions_array[0xDE] = make_instruction(0xDE,opcode::DEC, addr_mode::ABSX,    3, 7, 0);
+    instructions_array[0xC6] = make_instruction(0xC6,opcode::DEC, addr_mode::ZP,    2, 5, 0);
+    instructions_array[0xD6] = make_instruction(0xD6,opcode::DEC, addr_mode::ZPX,   2, 6, 0);
+    instructions_array[0xCE] = make_instruction(0xCE,opcode::DEC, addr_mode::ABS,   3, 6, 0);
+    instructions_array[0xDE] = make_instruction(0xDE,opcode::DEC, addr_mode::ABSX,  3, 7, 0);
 
-    instructions_array[0xCA] = make_instruction(0xCA,opcode::DEX, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0x88] = make_instruction(0x88,opcode::DEY, addr_mode::Implied, 1, 2, 0);
+    instructions_array[0xCA] = make_instruction(0xCA,opcode::DEX, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0x88] = make_instruction(0x88,opcode::DEY, addr_mode::Impl,  1, 2, 0);
 
-    instructions_array[0x49] = make_instruction(0x49,opcode::EOR, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0x45] = make_instruction(0x45,opcode::EOR, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x55] = make_instruction(0x55,opcode::EOR, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0x4D] = make_instruction(0x4D,opcode::EOR, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0x5D] = make_instruction(0x5D,opcode::EOR, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0x59] = make_instruction(0x59,opcode::EOR, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0x41] = make_instruction(0x41,opcode::EOR, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0x51] = make_instruction(0x51,opcode::EOR, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0x49] = make_instruction(0x49,opcode::EOR, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0x45] = make_instruction(0x45,opcode::EOR, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x55] = make_instruction(0x55,opcode::EOR, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0x4D] = make_instruction(0x4D,opcode::EOR, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0x5D] = make_instruction(0x5D,opcode::EOR, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0x59] = make_instruction(0x59,opcode::EOR, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0x41] = make_instruction(0x41,opcode::EOR, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0x51] = make_instruction(0x51,opcode::EOR, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0xE6] = make_instruction(0xE6,opcode::INC, addr_mode::ZP,      2, 5, 0);
-    instructions_array[0xF6] = make_instruction(0xF6,opcode::INC, addr_mode::ZPX,     2, 6, 0);
-    instructions_array[0xEE] = make_instruction(0xEE,opcode::INC, addr_mode::ABS,     3, 6, 0);
-    instructions_array[0xEF] = make_instruction(0xEF,opcode::INC, addr_mode::ABSX,    3, 7, 0);
+    instructions_array[0xE6] = make_instruction(0xE6,opcode::INC, addr_mode::ZP,    2, 5, 0);
+    instructions_array[0xF6] = make_instruction(0xF6,opcode::INC, addr_mode::ZPX,   2, 6, 0);
+    instructions_array[0xEE] = make_instruction(0xEE,opcode::INC, addr_mode::ABS,   3, 6, 0);
+    instructions_array[0xEF] = make_instruction(0xEF,opcode::INC, addr_mode::ABSX,  3, 7, 0);
 
-    instructions_array[0xE8] = make_instruction(0xE8,opcode::INX, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0xC8] = make_instruction(0xC8,opcode::INY, addr_mode::Implied, 1, 2, 0);
+    instructions_array[0xE8] = make_instruction(0xE8,opcode::INX, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0xC8] = make_instruction(0xC8,opcode::INY, addr_mode::Impl,  1, 2, 0);
 
-    instructions_array[0x4C] = make_instruction(0x4C,opcode::JMP, addr_mode::ABS,     3, 3, 0);
-    instructions_array[0x6C] = make_instruction(0x6C,opcode::JMP, addr_mode::IND,     3, 5, 0);
+    instructions_array[0x4C] = make_instruction(0x4C,opcode::JMP, addr_mode::ABS,   3, 3, 0);
+    instructions_array[0x6C] = make_instruction(0x6C,opcode::JMP, addr_mode::IND,   3, 5, 0);
 
-    instructions_array[0x20] = make_instruction(0x20,opcode::JSR, addr_mode::ABS,     3, 6, 0);
+    instructions_array[0x20] = make_instruction(0x20,opcode::JSR, addr_mode::ABS,   3, 6, 0);
 
-    instructions_array[0xA9] = make_instruction(0xA9,opcode::LDA, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xA5] = make_instruction(0xA5,opcode::LDA, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xB5] = make_instruction(0xB5,opcode::LDA, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0xAD] = make_instruction(0xAD,opcode::LDA, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0xBD] = make_instruction(0xBD,opcode::LDA, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0xB9] = make_instruction(0xB9,opcode::LDA, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0xA1] = make_instruction(0xA1,opcode::LDA, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0xB1] = make_instruction(0xB1,opcode::LDA, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0xA9] = make_instruction(0xA9,opcode::LDA, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xA5] = make_instruction(0xA5,opcode::LDA, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xB5] = make_instruction(0xB5,opcode::LDA, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0xAD] = make_instruction(0xAD,opcode::LDA, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0xBD] = make_instruction(0xBD,opcode::LDA, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0xB9] = make_instruction(0xB9,opcode::LDA, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0xA1] = make_instruction(0xA1,opcode::LDA, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0xB1] = make_instruction(0xB1,opcode::LDA, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0xA2] = make_instruction(0xA2,opcode::LDX, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xA6] = make_instruction(0xA6,opcode::LDX, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xB6] = make_instruction(0xB6,opcode::LDX, addr_mode::ZPY,     2, 4, 0);
-    instructions_array[0xAE] = make_instruction(0xAE,opcode::LDX, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0xBE] = make_instruction(0xBE,opcode::LDX, addr_mode::ABSY,    3, 4, 1);
+    instructions_array[0xA2] = make_instruction(0xA2,opcode::LDX, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xA6] = make_instruction(0xA6,opcode::LDX, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xB6] = make_instruction(0xB6,opcode::LDX, addr_mode::ZPY,   2, 4, 0);
+    instructions_array[0xAE] = make_instruction(0xAE,opcode::LDX, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0xBE] = make_instruction(0xBE,opcode::LDX, addr_mode::ABSY,  3, 4, 1);
 
-    instructions_array[0xA0] = make_instruction(0xA0,opcode::LDY, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xA4] = make_instruction(0xA4,opcode::LDY, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xB4] = make_instruction(0xB4,opcode::LDY, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0xAC] = make_instruction(0xAC,opcode::LDY, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0xBC] = make_instruction(0xBC,opcode::LDY, addr_mode::ABSX,    3, 4, 1);
+    instructions_array[0xA0] = make_instruction(0xA0,opcode::LDY, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xA4] = make_instruction(0xA4,opcode::LDY, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xB4] = make_instruction(0xB4,opcode::LDY, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0xAC] = make_instruction(0xAC,opcode::LDY, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0xBC] = make_instruction(0xBC,opcode::LDY, addr_mode::ABSX,  3, 4, 1);
 
-    instructions_array[0x4A] = make_instruction(0x4A,opcode::LSR, addr_mode::Accum,   1, 2, 0);
-    instructions_array[0x46] = make_instruction(0x46,opcode::LSR, addr_mode::ZP,      2, 5, 0);
-    instructions_array[0x56] = make_instruction(0x56,opcode::LSR, addr_mode::ZPX,     2, 6, 0);
-    instructions_array[0x4E] = make_instruction(0x4E,opcode::LSR, addr_mode::ABS,     3, 6, 0);
-    instructions_array[0x5E] = make_instruction(0x5E,opcode::LSR, addr_mode::ABSX,    3, 7, 0);
+    instructions_array[0x4A] = make_instruction(0x4A,opcode::LSR, addr_mode::Accum, 1, 2, 0);
+    instructions_array[0x46] = make_instruction(0x46,opcode::LSR, addr_mode::ZP,    2, 5, 0);
+    instructions_array[0x56] = make_instruction(0x56,opcode::LSR, addr_mode::ZPX,   2, 6, 0);
+    instructions_array[0x4E] = make_instruction(0x4E,opcode::LSR, addr_mode::ABS,   3, 6, 0);
+    instructions_array[0x5E] = make_instruction(0x5E,opcode::LSR, addr_mode::ABSX,  3, 7, 0);
 
-    instructions_array[0xEA] = make_instruction(0xEA,opcode::NOP, addr_mode::Implied, 1, 2, 0);
+    instructions_array[0xEA] = make_instruction(0xEA,opcode::NOP, addr_mode::Impl,  1, 2, 0);
 
-    instructions_array[0x09] = make_instruction(0x09,opcode::ORA, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0x05] = make_instruction(0x05,opcode::ORA, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x15] = make_instruction(0x15,opcode::ORA, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0x0D] = make_instruction(0x0D,opcode::ORA, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0x1D] = make_instruction(0x1D,opcode::ORA, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0x19] = make_instruction(0x19,opcode::ORA, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0x01] = make_instruction(0x01,opcode::ORA, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0x11] = make_instruction(0x11,opcode::ORA, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0x09] = make_instruction(0x09,opcode::ORA, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0x05] = make_instruction(0x05,opcode::ORA, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x15] = make_instruction(0x15,opcode::ORA, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0x0D] = make_instruction(0x0D,opcode::ORA, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0x1D] = make_instruction(0x1D,opcode::ORA, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0x19] = make_instruction(0x19,opcode::ORA, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0x01] = make_instruction(0x01,opcode::ORA, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0x11] = make_instruction(0x11,opcode::ORA, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0x48] = make_instruction(0x48,opcode::PHA, addr_mode::Implied, 1, 3, 0);
-    instructions_array[0x08] = make_instruction(0x08,opcode::PHP, addr_mode::Implied, 1, 3, 0);
-    instructions_array[0x68] = make_instruction(0x68,opcode::PLA, addr_mode::Implied, 1, 4, 0);
-    instructions_array[0x28] = make_instruction(0x28,opcode::PLP, addr_mode::Implied, 1, 4, 0);
+    instructions_array[0x48] = make_instruction(0x48,opcode::PHA, addr_mode::Impl,  1, 3, 0);
+    instructions_array[0x08] = make_instruction(0x08,opcode::PHP, addr_mode::Impl,  1, 3, 0);
+    instructions_array[0x68] = make_instruction(0x68,opcode::PLA, addr_mode::Impl,  1, 4, 0);
+    instructions_array[0x28] = make_instruction(0x28,opcode::PLP, addr_mode::Impl,  1, 4, 0);
 
-    instructions_array[0x2A] = make_instruction(0x2A,opcode::ROL, addr_mode::Accum,   1, 2, 0);
-    instructions_array[0x26] = make_instruction(0x26,opcode::ROL, addr_mode::ZP,      2, 5, 0);
-    instructions_array[0x36] = make_instruction(0x36,opcode::ROL, addr_mode::ZPX,     2, 6, 0);
-    instructions_array[0x2E] = make_instruction(0x2E,opcode::ROL, addr_mode::ABS,     3, 6, 0);
-    instructions_array[0x3E] = make_instruction(0x3E,opcode::ROL, addr_mode::ABSX,    3, 7, 0);
+    instructions_array[0x2A] = make_instruction(0x2A,opcode::ROL, addr_mode::Accum, 1, 2, 0);
+    instructions_array[0x26] = make_instruction(0x26,opcode::ROL, addr_mode::ZP,    2, 5, 0);
+    instructions_array[0x36] = make_instruction(0x36,opcode::ROL, addr_mode::ZPX,   2, 6, 0);
+    instructions_array[0x2E] = make_instruction(0x2E,opcode::ROL, addr_mode::ABS,   3, 6, 0);
+    instructions_array[0x3E] = make_instruction(0x3E,opcode::ROL, addr_mode::ABSX,  3, 7, 0);
 
-    instructions_array[0x6A] = make_instruction(0x6A,opcode::ROR, addr_mode::Accum,   1, 2, 0);
-    instructions_array[0x66] = make_instruction(0x66,opcode::ROR, addr_mode::ZP,      2, 5, 0);
-    instructions_array[0x76] = make_instruction(0x76,opcode::ROR, addr_mode::ZPX,     2, 6, 0);
-    instructions_array[0x6E] = make_instruction(0x6E,opcode::ROR, addr_mode::ABS,     3, 6, 0);
-    instructions_array[0x7E] = make_instruction(0x7E,opcode::ROR, addr_mode::ABSX,    3, 7, 0);
+    instructions_array[0x6A] = make_instruction(0x6A,opcode::ROR, addr_mode::Accum, 1, 2, 0);
+    instructions_array[0x66] = make_instruction(0x66,opcode::ROR, addr_mode::ZP,    2, 5, 0);
+    instructions_array[0x76] = make_instruction(0x76,opcode::ROR, addr_mode::ZPX,   2, 6, 0);
+    instructions_array[0x6E] = make_instruction(0x6E,opcode::ROR, addr_mode::ABS,   3, 6, 0);
+    instructions_array[0x7E] = make_instruction(0x7E,opcode::ROR, addr_mode::ABSX,  3, 7, 0);
 
-    instructions_array[0x40] = make_instruction(0x40,opcode::RTI, addr_mode::Implied, 1, 6, 0);
-    instructions_array[0x60] = make_instruction(0x60,opcode::RTS, addr_mode::Implied, 1, 6, 0);
+    instructions_array[0x40] = make_instruction(0x40,opcode::RTI, addr_mode::Impl,  1, 6, 0);
+    instructions_array[0x60] = make_instruction(0x60,opcode::RTS, addr_mode::Impl,  1, 6, 0);
 
-    instructions_array[0xE9] = make_instruction(0xE9,opcode::SBC, addr_mode::IMM,     2, 2, 0);
-    instructions_array[0xE5] = make_instruction(0xE5,opcode::SBC, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0xF5] = make_instruction(0xF5,opcode::SBC, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0xED] = make_instruction(0xED,opcode::SBC, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0xFD] = make_instruction(0xFD,opcode::SBC, addr_mode::ABSX,    3, 4, 1);
-    instructions_array[0xF9] = make_instruction(0xF9,opcode::SBC, addr_mode::ABSY,    3, 4, 1);
-    instructions_array[0xE1] = make_instruction(0xE1,opcode::SBC, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0xF1] = make_instruction(0xF1,opcode::SBC, addr_mode::INDY,    2, 5, 1);
+    instructions_array[0xE9] = make_instruction(0xE9,opcode::SBC, addr_mode::IMM,   2, 2, 0);
+    instructions_array[0xE5] = make_instruction(0xE5,opcode::SBC, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0xF5] = make_instruction(0xF5,opcode::SBC, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0xED] = make_instruction(0xED,opcode::SBC, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0xFD] = make_instruction(0xFD,opcode::SBC, addr_mode::ABSX,  3, 4, 1);
+    instructions_array[0xF9] = make_instruction(0xF9,opcode::SBC, addr_mode::ABSY,  3, 4, 1);
+    instructions_array[0xE1] = make_instruction(0xE1,opcode::SBC, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0xF1] = make_instruction(0xF1,opcode::SBC, addr_mode::INDY,  2, 5, 1);
 
-    instructions_array[0x38] = make_instruction(0x38,opcode::SEC, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0xF8] = make_instruction(0xF8,opcode::SED, addr_mode::Implied, 1, 2, 0);
-    instructions_array[0x78] = make_instruction(0x78,opcode::SEI, addr_mode::Implied, 1, 2, 0);
+    instructions_array[0x38] = make_instruction(0x38,opcode::SEC, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0xF8] = make_instruction(0xF8,opcode::SED, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0x78] = make_instruction(0x78,opcode::SEI, addr_mode::Impl,  1, 2, 0);
 
-    instructions_array[0x85] = make_instruction(0x85,opcode::STA, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x95] = make_instruction(0x95,opcode::STA, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0x8D] = make_instruction(0x8D,opcode::STA, addr_mode::ABS,     3, 4, 0);
-    instructions_array[0x9D] = make_instruction(0x9D,opcode::STA, addr_mode::ABSX,    3, 5, 0);
-    instructions_array[0x99] = make_instruction(0x99,opcode::STA, addr_mode::ABSY,    3, 5, 0);
-    instructions_array[0x81] = make_instruction(0x81,opcode::STA, addr_mode::INDX,    2, 6, 0);
-    instructions_array[0x91] = make_instruction(0x91,opcode::STA, addr_mode::INDY,    2, 6, 0);
+    instructions_array[0x85] = make_instruction(0x85,opcode::STA, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x95] = make_instruction(0x95,opcode::STA, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0x8D] = make_instruction(0x8D,opcode::STA, addr_mode::ABS,   3, 4, 0);
+    instructions_array[0x9D] = make_instruction(0x9D,opcode::STA, addr_mode::ABSX,  3, 5, 0);
+    instructions_array[0x99] = make_instruction(0x99,opcode::STA, addr_mode::ABSY,  3, 5, 0);
+    instructions_array[0x81] = make_instruction(0x81,opcode::STA, addr_mode::INDX,  2, 6, 0);
+    instructions_array[0x91] = make_instruction(0x91,opcode::STA, addr_mode::INDY,  2, 6, 0);
 
-    instructions_array[0x86] = make_instruction(0x86,opcode::STX, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x96] = make_instruction(0x96,opcode::STX, addr_mode::ZPY,     2, 4, 0);
-    instructions_array[0x8E] = make_instruction(0x8E,opcode::STX, addr_mode::ABS,     3, 4, 0);
+    instructions_array[0x86] = make_instruction(0x86,opcode::STX, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x96] = make_instruction(0x96,opcode::STX, addr_mode::ZPY,   2, 4, 0);
+    instructions_array[0x8E] = make_instruction(0x8E,opcode::STX, addr_mode::ABS,   3, 4, 0);
 
-    instructions_array[0x84] = make_instruction(0x84,opcode::STY, addr_mode::ZP,      2, 3, 0);
-    instructions_array[0x94] = make_instruction(0x94,opcode::STY, addr_mode::ZPX,     2, 4, 0);
-    instructions_array[0x8C] = make_instruction(0x8C,opcode::STY, addr_mode::ABS,     3, 4, 0);
+    instructions_array[0x84] = make_instruction(0x84,opcode::STY, addr_mode::ZP,    2, 3, 0);
+    instructions_array[0x94] = make_instruction(0x94,opcode::STY, addr_mode::ZPX,   2, 4, 0);
+    instructions_array[0x8C] = make_instruction(0x8C,opcode::STY, addr_mode::ABS,   3, 4, 0);
 
-    instructions_array[0xAA] = make_instruction(0xAA,opcode::TAX, addr_mode::Implied,   1, 2, 0);
-    instructions_array[0xA8] = make_instruction(0xA8,opcode::TAY, addr_mode::Implied,   1, 2, 0);
-    instructions_array[0xBA] = make_instruction(0xBA,opcode::TSX, addr_mode::Implied,   1, 2, 0);
-    instructions_array[0x8A] = make_instruction(0x8A,opcode::TXA, addr_mode::Implied,   1, 2, 0);
-    instructions_array[0x9A] = make_instruction(0x9A,opcode::TXS, addr_mode::Implied,   1, 2, 0);
-    instructions_array[0x98] = make_instruction(0x98,opcode::TYA, addr_mode::Implied,   1, 2, 0);
+    instructions_array[0xAA] = make_instruction(0xAA,opcode::TAX, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0xA8] = make_instruction(0xA8,opcode::TAY, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0xBA] = make_instruction(0xBA,opcode::TSX, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0x8A] = make_instruction(0x8A,opcode::TXA, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0x9A] = make_instruction(0x9A,opcode::TXS, addr_mode::Impl,  1, 2, 0);
+    instructions_array[0x98] = make_instruction(0x98,opcode::TYA, addr_mode::Impl,  1, 2, 0);
 
 
      
