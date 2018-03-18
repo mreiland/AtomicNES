@@ -5,14 +5,14 @@
 #include "opcodes.h"
 
 struct Instruction {
-  int opcode_value;
+  uint8_t opcode_value;
   
   opcode opcode_type;
   addressing_mode addr_mode_type;
   
-  int len;
-  int cycles;
-  int page_cycles; // number of additional pages if page boundary crossed.
+  uint8_t len;
+  uint8_t cycles;
+  uint8_t page_cycles; // number of additional pages if page boundary crossed.
 };
 
 #endif

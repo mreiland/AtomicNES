@@ -5,7 +5,13 @@
 namespace {
   std::array<Instruction, 256> instr_tbl;
   
-  Instruction make_instruction(int value, opcode opc, addressing_mode mode, int len, int cycles, int page_cycles) {
+  Instruction make_instruction(uint8_t value,
+                               opcode opc,
+                               addressing_mode mode,
+                               uint8_t len,
+                               uint8_t cycles,
+                               uint8_t page_cycles)
+  {
     
     if(value < 0 || value > 256)           throw "value is incorrect";
     if(len < 0 || len > 2)                 throw "len is incorrect";
