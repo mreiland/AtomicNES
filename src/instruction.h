@@ -1,8 +1,8 @@
 #ifndef ATOM_NES_INSTRUCTION_H
 #define ATOM_NES_INSTRUCTION_H
 
-#include "addressing_modes.h"
-#include "opcodes.h"
+#include "addressing_mode.h"
+#include "opcode.h"
 
 struct Instruction {
   uint8_t opcode_value;

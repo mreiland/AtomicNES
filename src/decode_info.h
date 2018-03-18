@@ -1,8 +1,8 @@
 #ifndef ATOM_NES_DECODE_INFO_H
 #define ATOM_NES_DECODE_INFO_H
 
-#include "opcodes.h"
-#include "addressing_modes.h"
+#include "opcode.h"
+#include "addressing_mode.h"
 #include "instruction.h"
 
 struct decode_info {

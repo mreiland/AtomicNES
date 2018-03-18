@@ -6,16 +6,16 @@ add_subdirectory(lib/fmt)
 set(COMPILER_FEATURES cxx_std_17)
 
 set(ANES_SOURCES
-  src/addressing_modes.h
+  src/addressing_mode.h
   src/cpu.h
   src/decode_info.h
   src/executor.cpp src/executor.h
   src/instruction.h
   src/instructions.cpp src/instructions.h
   src/memory.cpp src/memory.h
-  
 
-  src/opcodes.h
+
+  src/opcode.h
 )
 
 set(ANES_TEST_SOURCES
