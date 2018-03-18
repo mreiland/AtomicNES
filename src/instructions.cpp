@@ -21,7 +21,7 @@ namespace {
     Instruction instr  = { 
       .opcode = value,
       .operation = opc,
-      .addr_mode_type = mode,
+      .mode = mode,
       .len = len,
       .cycles = cycles,
       .page_cycles = page_cycles

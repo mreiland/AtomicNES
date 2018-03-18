@@ -8,7 +8,7 @@ struct Instruction {
   uint8_t opcode;
   
   Operation operation;
-  AddressingMode addr_mode_type;
+  AddressingMode mode;
   
   uint8_t len;
   uint8_t cycles;
