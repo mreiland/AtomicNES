@@ -5,10 +5,10 @@
 
 enum class addr_mode {
   None = 0,
-  Accumulator,
-  Immediate,
+  Accum,
+  IMM,
   Implied,
-  Relative,
+  Rel,
   ZP,
   ZPX,
   ZPY,
@@ -22,10 +22,10 @@ enum class addr_mode {
 
 inline std::string addr_mode2string(addr_mode adm) {
   switch(adm) {
-    case addr_mode::Accumulator: return "Accumulator";
-    case addr_mode::Immediate:   return "Immediate";
+    case addr_mode::Accum: return "Accumulator";
+    case addr_mode::IMM:   return "Immediate";
     case addr_mode::Implied:     return "Implied";
-    case addr_mode::Relative:    return "Relative";
+    case addr_mode::Rel:    return "Relative";
     case addr_mode::ZP:          return "ZP";    
     case addr_mode::ZPX:         return "ZPX";
     case addr_mode::ZPY:         return "ZPY";
@@ -40,10 +40,10 @@ inline std::string addr_mode2string(addr_mode adm) {
 }
 
 inline addr_mode string2addr_mode(std::string str) {
-  if(str == "Accumulator") return addr_mode::Accumulator;
-  if(str == "Immediate")   return addr_mode::Immediate;
+  if(str == "Accumulator") return addr_mode::Accum;
+  if(str == "Immediate")   return addr_mode::IMM;
   if(str == "Implied")     return addr_mode::Implied;
-  if(str == "Relative")    return addr_mode::Relative;
+  if(str == "Relative")    return addr_mode::Rel;
   if(str == "ZP")          return addr_mode::ZP;
   if(str == "ZPX")         return addr_mode::ZPX;
   if(str == "ZPY")         return addr_mode::ZPY;
