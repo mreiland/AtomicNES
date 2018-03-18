@@ -6,7 +6,7 @@
 
 #include "instructions.h"
 
-#include "cpu.h"
+#include "Cpu.h"
 #include "executor.h"
 #include "memory.h"
 
@@ -15,7 +15,7 @@ int main() {
   
   // fetch ROM from HD
   
-  cpu cpu;
+  Cpu cpu;
   decode_info decoded;
   memory mem;
   

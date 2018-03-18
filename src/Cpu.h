@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-struct cpu {
+struct Cpu {
   uint8_t a;
   uint8_t x;
   uint8_t y;
