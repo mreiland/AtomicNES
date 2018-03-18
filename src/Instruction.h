@@ -15,4 +15,7 @@ struct Instruction {
   uint8_t page_cycles; // number of additional pages if page boundary crossed.
 };
 
+Instruction *get_instruction(int opcode_value);
+void initialize_instructions();
+
 #endif

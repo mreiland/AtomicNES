@@ -10,8 +10,7 @@ set(ANES_SOURCES
   src/Cpu.h
   src/DecodeInfo.h
   src/executor.cpp src/executor.h
-  src/Instruction.h
-  src/instructions.cpp src/instructions.h
+  src/Instruction.cpp src/Instruction.h
   src/Memory.cpp src/Memory.h
 
 
