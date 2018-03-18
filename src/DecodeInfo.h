@@ -3,7 +3,7 @@
 
 #include "Operation.h"
 #include "AddressingMode.h"
-#include "instruction.h"
+#include "Instruction.h"
 
 struct DecodeInfo {
   Instruction *instruction;
