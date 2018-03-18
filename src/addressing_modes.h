@@ -28,7 +28,7 @@ inline std::string to_string(addressing_mode adm) {
   return "";
 }
 
-inline addressing_mode to_addr_mode(std::string str) {
+inline addressing_mode to_addressing_mode(std::string str) {
   if(str == "Accumulator") return addressing_mode::Accum;
   if(str == "Immediate")   return addressing_mode::IMM;
   if(str == "Implied")     return addressing_mode::Impl;
