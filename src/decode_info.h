@@ -6,7 +6,7 @@
 #include "instruction.h"
 
 struct decode_info {
-  uint8_t opcode;
+  Instruction *instruction;
   
   uint16_t addr1;
   uint16_t addr2;
