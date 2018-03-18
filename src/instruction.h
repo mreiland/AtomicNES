@@ -2,12 +2,12 @@
 #define ATOM_NES_INSTRUCTION_H
 
 #include "addressing_mode.h"
-#include "operation.h"
+#include "Operation.h"
 
 struct Instruction {
   uint8_t opcode;
   
-  operation opcode_type;
+  Operation opcode_type;
   addressing_mode addr_mode_type;
   
   uint8_t len;

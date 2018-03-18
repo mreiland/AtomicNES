@@ -6,7 +6,7 @@ namespace {
   std::array<Instruction, 256> instr_tbl;
   
   Instruction make_instruction(uint8_t value,
-                               operation opc,
+                               Operation opc,
                                addressing_mode mode,
                                uint8_t len,
                                uint8_t cycles,
@@ -35,191 +35,191 @@ namespace instructions {
     return &instr_tbl[opcode_value];
   }
   void initialize() {
-    instr_tbl[0x69] = make_instruction(0x69,operation::ADC, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0x65] = make_instruction(0x65,operation::ADC, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x75] = make_instruction(0x75,operation::ADC, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0x6D] = make_instruction(0x6D,operation::ADC, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0x7D] = make_instruction(0x7D,operation::ADC, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0x79] = make_instruction(0x79,operation::ADC, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0x61] = make_instruction(0x61,operation::ADC, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0x71] = make_instruction(0x71,operation::ADC, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0x69] = make_instruction(0x69,Operation::ADC, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0x65] = make_instruction(0x65,Operation::ADC, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x75] = make_instruction(0x75,Operation::ADC, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0x6D] = make_instruction(0x6D,Operation::ADC, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x7D] = make_instruction(0x7D,Operation::ADC, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0x79] = make_instruction(0x79,Operation::ADC, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0x61] = make_instruction(0x61,Operation::ADC, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0x71] = make_instruction(0x71,Operation::ADC, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0x29] = make_instruction(0x29,operation::AND, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0x25] = make_instruction(0x25,operation::AND, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x35] = make_instruction(0x35,operation::AND, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0x2D] = make_instruction(0x2D,operation::AND, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0x3D] = make_instruction(0x3D,operation::AND, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0x39] = make_instruction(0x39,operation::AND, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0x21] = make_instruction(0x21,operation::AND, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0x31] = make_instruction(0x31,operation::AND, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0x29] = make_instruction(0x29,Operation::AND, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0x25] = make_instruction(0x25,Operation::AND, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x35] = make_instruction(0x35,Operation::AND, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0x2D] = make_instruction(0x2D,Operation::AND, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x3D] = make_instruction(0x3D,Operation::AND, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0x39] = make_instruction(0x39,Operation::AND, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0x21] = make_instruction(0x21,Operation::AND, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0x31] = make_instruction(0x31,Operation::AND, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0x0A] = make_instruction(0x0A,operation::ASL, addressing_mode::Accum, 1, 2, 0);
-    instr_tbl[0x06] = make_instruction(0x06,operation::ASL, addressing_mode::ZP,    2, 5, 0);
-    instr_tbl[0x16] = make_instruction(0x16,operation::ASL, addressing_mode::ZPX,   2, 6, 0);
-    instr_tbl[0x0E] = make_instruction(0x0E,operation::ASL, addressing_mode::ABS,   3, 6, 0);
-    instr_tbl[0x1E] = make_instruction(0x1E,operation::ASL, addressing_mode::ABSX,  3, 7, 0);
+    instr_tbl[0x0A] = make_instruction(0x0A,Operation::ASL, addressing_mode::Accum, 1, 2, 0);
+    instr_tbl[0x06] = make_instruction(0x06,Operation::ASL, addressing_mode::ZP,    2, 5, 0);
+    instr_tbl[0x16] = make_instruction(0x16,Operation::ASL, addressing_mode::ZPX,   2, 6, 0);
+    instr_tbl[0x0E] = make_instruction(0x0E,Operation::ASL, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0x1E] = make_instruction(0x1E,Operation::ASL, addressing_mode::ABSX,  3, 7, 0);
 
-    instr_tbl[0x90] = make_instruction(0x90,operation::BCC, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instr_tbl[0xB0] = make_instruction(0xB0,operation::BCS, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instr_tbl[0xF0] = make_instruction(0xF0,operation::BEQ, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0x90] = make_instruction(0x90,Operation::BCC, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0xB0] = make_instruction(0xB0,Operation::BCS, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0xF0] = make_instruction(0xF0,Operation::BEQ, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
 
-    instr_tbl[0x24] = make_instruction(0x24,operation::BIT, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x2C] = make_instruction(0x2C,operation::BIT, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x24] = make_instruction(0x24,Operation::BIT, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x2C] = make_instruction(0x2C,Operation::BIT, addressing_mode::ABS,   3, 4, 0);
 
-    instr_tbl[0x30] = make_instruction(0x30,operation::BMI, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instr_tbl[0xD0] = make_instruction(0xD0,operation::BNE, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instr_tbl[0x10] = make_instruction(0x10,operation::BPL, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0x30] = make_instruction(0x30,Operation::BMI, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0xD0] = make_instruction(0xD0,Operation::BNE, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0x10] = make_instruction(0x10,Operation::BPL, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
     
-    instr_tbl[0x00] = make_instruction(0x00,operation::BRK, addressing_mode::Impl,  1, 7, 0);
+    instr_tbl[0x00] = make_instruction(0x00,Operation::BRK, addressing_mode::Impl,  1, 7, 0);
 
-    instr_tbl[0x50] = make_instruction(0x50,operation::BVC, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
-    instr_tbl[0x70] = make_instruction(0x70,operation::BVS, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0x50] = make_instruction(0x50,Operation::BVC, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
+    instr_tbl[0x70] = make_instruction(0x70,Operation::BVS, addressing_mode::Rel,   2, 2, 2); // TODO: look closer at this, the description isn't clear
 
-    instr_tbl[0x18] = make_instruction(0x18,operation::CLC, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0xD8] = make_instruction(0xD8,operation::CLD, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0x58] = make_instruction(0x58,operation::CLI, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0xB8] = make_instruction(0xB8,operation::CLV, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x18] = make_instruction(0x18,Operation::CLC, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xD8] = make_instruction(0xD8,Operation::CLD, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x58] = make_instruction(0x58,Operation::CLI, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xB8] = make_instruction(0xB8,Operation::CLV, addressing_mode::Impl,  1, 2, 0);
 
-    instr_tbl[0xC9] = make_instruction(0xC9,operation::CMP, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xC5] = make_instruction(0xC5,operation::CMP, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xD5] = make_instruction(0xD5,operation::CMP, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0xCD] = make_instruction(0xCD,operation::CMP, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0xDD] = make_instruction(0xDD,operation::CMP, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0xD9] = make_instruction(0xD9,operation::CMP, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0xC1] = make_instruction(0xC1,operation::CMP, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0xD1] = make_instruction(0xD1,operation::CMP, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0xC9] = make_instruction(0xC9,Operation::CMP, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xC5] = make_instruction(0xC5,Operation::CMP, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xD5] = make_instruction(0xD5,Operation::CMP, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0xCD] = make_instruction(0xCD,Operation::CMP, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xDD] = make_instruction(0xDD,Operation::CMP, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0xD9] = make_instruction(0xD9,Operation::CMP, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0xC1] = make_instruction(0xC1,Operation::CMP, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0xD1] = make_instruction(0xD1,Operation::CMP, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0xE0] = make_instruction(0xE0,operation::CPX, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xE4] = make_instruction(0xE4,operation::CPX, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xEC] = make_instruction(0xEC,operation::CPX, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xE0] = make_instruction(0xE0,Operation::CPX, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xE4] = make_instruction(0xE4,Operation::CPX, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xEC] = make_instruction(0xEC,Operation::CPX, addressing_mode::ABS,   3, 4, 0);
 
-    instr_tbl[0xC0] = make_instruction(0xC0,operation::CPY, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xC4] = make_instruction(0xC4,operation::CPY, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xCC] = make_instruction(0xCC,operation::CPY, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xC0] = make_instruction(0xC0,Operation::CPY, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xC4] = make_instruction(0xC4,Operation::CPY, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xCC] = make_instruction(0xCC,Operation::CPY, addressing_mode::ABS,   3, 4, 0);
 
-    instr_tbl[0xC6] = make_instruction(0xC6,operation::DEC, addressing_mode::ZP,    2, 5, 0);
-    instr_tbl[0xD6] = make_instruction(0xD6,operation::DEC, addressing_mode::ZPX,   2, 6, 0);
-    instr_tbl[0xCE] = make_instruction(0xCE,operation::DEC, addressing_mode::ABS,   3, 6, 0);
-    instr_tbl[0xDE] = make_instruction(0xDE,operation::DEC, addressing_mode::ABSX,  3, 7, 0);
+    instr_tbl[0xC6] = make_instruction(0xC6,Operation::DEC, addressing_mode::ZP,    2, 5, 0);
+    instr_tbl[0xD6] = make_instruction(0xD6,Operation::DEC, addressing_mode::ZPX,   2, 6, 0);
+    instr_tbl[0xCE] = make_instruction(0xCE,Operation::DEC, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0xDE] = make_instruction(0xDE,Operation::DEC, addressing_mode::ABSX,  3, 7, 0);
 
-    instr_tbl[0xCA] = make_instruction(0xCA,operation::DEX, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0x88] = make_instruction(0x88,operation::DEY, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xCA] = make_instruction(0xCA,Operation::DEX, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x88] = make_instruction(0x88,Operation::DEY, addressing_mode::Impl,  1, 2, 0);
 
-    instr_tbl[0x49] = make_instruction(0x49,operation::EOR, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0x45] = make_instruction(0x45,operation::EOR, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x55] = make_instruction(0x55,operation::EOR, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0x4D] = make_instruction(0x4D,operation::EOR, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0x5D] = make_instruction(0x5D,operation::EOR, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0x59] = make_instruction(0x59,operation::EOR, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0x41] = make_instruction(0x41,operation::EOR, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0x51] = make_instruction(0x51,operation::EOR, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0x49] = make_instruction(0x49,Operation::EOR, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0x45] = make_instruction(0x45,Operation::EOR, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x55] = make_instruction(0x55,Operation::EOR, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0x4D] = make_instruction(0x4D,Operation::EOR, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x5D] = make_instruction(0x5D,Operation::EOR, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0x59] = make_instruction(0x59,Operation::EOR, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0x41] = make_instruction(0x41,Operation::EOR, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0x51] = make_instruction(0x51,Operation::EOR, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0xE6] = make_instruction(0xE6,operation::INC, addressing_mode::ZP,    2, 5, 0);
-    instr_tbl[0xF6] = make_instruction(0xF6,operation::INC, addressing_mode::ZPX,   2, 6, 0);
-    instr_tbl[0xEE] = make_instruction(0xEE,operation::INC, addressing_mode::ABS,   3, 6, 0);
-    instr_tbl[0xEF] = make_instruction(0xEF,operation::INC, addressing_mode::ABSX,  3, 7, 0);
+    instr_tbl[0xE6] = make_instruction(0xE6,Operation::INC, addressing_mode::ZP,    2, 5, 0);
+    instr_tbl[0xF6] = make_instruction(0xF6,Operation::INC, addressing_mode::ZPX,   2, 6, 0);
+    instr_tbl[0xEE] = make_instruction(0xEE,Operation::INC, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0xEF] = make_instruction(0xEF,Operation::INC, addressing_mode::ABSX,  3, 7, 0);
 
-    instr_tbl[0xE8] = make_instruction(0xE8,operation::INX, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0xC8] = make_instruction(0xC8,operation::INY, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xE8] = make_instruction(0xE8,Operation::INX, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xC8] = make_instruction(0xC8,Operation::INY, addressing_mode::Impl,  1, 2, 0);
 
-    instr_tbl[0x4C] = make_instruction(0x4C,operation::JMP, addressing_mode::ABS,   3, 3, 0);
-    instr_tbl[0x6C] = make_instruction(0x6C,operation::JMP, addressing_mode::IND,   3, 5, 0);
+    instr_tbl[0x4C] = make_instruction(0x4C,Operation::JMP, addressing_mode::ABS,   3, 3, 0);
+    instr_tbl[0x6C] = make_instruction(0x6C,Operation::JMP, addressing_mode::IND,   3, 5, 0);
 
-    instr_tbl[0x20] = make_instruction(0x20,operation::JSR, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0x20] = make_instruction(0x20,Operation::JSR, addressing_mode::ABS,   3, 6, 0);
 
-    instr_tbl[0xA9] = make_instruction(0xA9,operation::LDA, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xA5] = make_instruction(0xA5,operation::LDA, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xB5] = make_instruction(0xB5,operation::LDA, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0xAD] = make_instruction(0xAD,operation::LDA, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0xBD] = make_instruction(0xBD,operation::LDA, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0xB9] = make_instruction(0xB9,operation::LDA, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0xA1] = make_instruction(0xA1,operation::LDA, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0xB1] = make_instruction(0xB1,operation::LDA, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0xA9] = make_instruction(0xA9,Operation::LDA, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xA5] = make_instruction(0xA5,Operation::LDA, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xB5] = make_instruction(0xB5,Operation::LDA, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0xAD] = make_instruction(0xAD,Operation::LDA, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xBD] = make_instruction(0xBD,Operation::LDA, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0xB9] = make_instruction(0xB9,Operation::LDA, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0xA1] = make_instruction(0xA1,Operation::LDA, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0xB1] = make_instruction(0xB1,Operation::LDA, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0xA2] = make_instruction(0xA2,operation::LDX, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xA6] = make_instruction(0xA6,operation::LDX, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xB6] = make_instruction(0xB6,operation::LDX, addressing_mode::ZPY,   2, 4, 0);
-    instr_tbl[0xAE] = make_instruction(0xAE,operation::LDX, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0xBE] = make_instruction(0xBE,operation::LDX, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0xA2] = make_instruction(0xA2,Operation::LDX, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xA6] = make_instruction(0xA6,Operation::LDX, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xB6] = make_instruction(0xB6,Operation::LDX, addressing_mode::ZPY,   2, 4, 0);
+    instr_tbl[0xAE] = make_instruction(0xAE,Operation::LDX, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xBE] = make_instruction(0xBE,Operation::LDX, addressing_mode::ABSY,  3, 4, 1);
 
-    instr_tbl[0xA0] = make_instruction(0xA0,operation::LDY, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xA4] = make_instruction(0xA4,operation::LDY, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xB4] = make_instruction(0xB4,operation::LDY, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0xAC] = make_instruction(0xAC,operation::LDY, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0xBC] = make_instruction(0xBC,operation::LDY, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0xA0] = make_instruction(0xA0,Operation::LDY, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xA4] = make_instruction(0xA4,Operation::LDY, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xB4] = make_instruction(0xB4,Operation::LDY, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0xAC] = make_instruction(0xAC,Operation::LDY, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xBC] = make_instruction(0xBC,Operation::LDY, addressing_mode::ABSX,  3, 4, 1);
 
-    instr_tbl[0x4A] = make_instruction(0x4A,operation::LSR, addressing_mode::Accum, 1, 2, 0);
-    instr_tbl[0x46] = make_instruction(0x46,operation::LSR, addressing_mode::ZP,    2, 5, 0);
-    instr_tbl[0x56] = make_instruction(0x56,operation::LSR, addressing_mode::ZPX,   2, 6, 0);
-    instr_tbl[0x4E] = make_instruction(0x4E,operation::LSR, addressing_mode::ABS,   3, 6, 0);
-    instr_tbl[0x5E] = make_instruction(0x5E,operation::LSR, addressing_mode::ABSX,  3, 7, 0);
+    instr_tbl[0x4A] = make_instruction(0x4A,Operation::LSR, addressing_mode::Accum, 1, 2, 0);
+    instr_tbl[0x46] = make_instruction(0x46,Operation::LSR, addressing_mode::ZP,    2, 5, 0);
+    instr_tbl[0x56] = make_instruction(0x56,Operation::LSR, addressing_mode::ZPX,   2, 6, 0);
+    instr_tbl[0x4E] = make_instruction(0x4E,Operation::LSR, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0x5E] = make_instruction(0x5E,Operation::LSR, addressing_mode::ABSX,  3, 7, 0);
 
-    instr_tbl[0xEA] = make_instruction(0xEA,operation::NOP, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xEA] = make_instruction(0xEA,Operation::NOP, addressing_mode::Impl,  1, 2, 0);
 
-    instr_tbl[0x09] = make_instruction(0x09,operation::ORA, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0x05] = make_instruction(0x05,operation::ORA, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x15] = make_instruction(0x15,operation::ORA, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0x0D] = make_instruction(0x0D,operation::ORA, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0x1D] = make_instruction(0x1D,operation::ORA, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0x19] = make_instruction(0x19,operation::ORA, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0x01] = make_instruction(0x01,operation::ORA, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0x11] = make_instruction(0x11,operation::ORA, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0x09] = make_instruction(0x09,Operation::ORA, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0x05] = make_instruction(0x05,Operation::ORA, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x15] = make_instruction(0x15,Operation::ORA, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0x0D] = make_instruction(0x0D,Operation::ORA, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x1D] = make_instruction(0x1D,Operation::ORA, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0x19] = make_instruction(0x19,Operation::ORA, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0x01] = make_instruction(0x01,Operation::ORA, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0x11] = make_instruction(0x11,Operation::ORA, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0x48] = make_instruction(0x48,operation::PHA, addressing_mode::Impl,  1, 3, 0);
-    instr_tbl[0x08] = make_instruction(0x08,operation::PHP, addressing_mode::Impl,  1, 3, 0);
-    instr_tbl[0x68] = make_instruction(0x68,operation::PLA, addressing_mode::Impl,  1, 4, 0);
-    instr_tbl[0x28] = make_instruction(0x28,operation::PLP, addressing_mode::Impl,  1, 4, 0);
+    instr_tbl[0x48] = make_instruction(0x48,Operation::PHA, addressing_mode::Impl,  1, 3, 0);
+    instr_tbl[0x08] = make_instruction(0x08,Operation::PHP, addressing_mode::Impl,  1, 3, 0);
+    instr_tbl[0x68] = make_instruction(0x68,Operation::PLA, addressing_mode::Impl,  1, 4, 0);
+    instr_tbl[0x28] = make_instruction(0x28,Operation::PLP, addressing_mode::Impl,  1, 4, 0);
 
-    instr_tbl[0x2A] = make_instruction(0x2A,operation::ROL, addressing_mode::Accum, 1, 2, 0);
-    instr_tbl[0x26] = make_instruction(0x26,operation::ROL, addressing_mode::ZP,    2, 5, 0);
-    instr_tbl[0x36] = make_instruction(0x36,operation::ROL, addressing_mode::ZPX,   2, 6, 0);
-    instr_tbl[0x2E] = make_instruction(0x2E,operation::ROL, addressing_mode::ABS,   3, 6, 0);
-    instr_tbl[0x3E] = make_instruction(0x3E,operation::ROL, addressing_mode::ABSX,  3, 7, 0);
+    instr_tbl[0x2A] = make_instruction(0x2A,Operation::ROL, addressing_mode::Accum, 1, 2, 0);
+    instr_tbl[0x26] = make_instruction(0x26,Operation::ROL, addressing_mode::ZP,    2, 5, 0);
+    instr_tbl[0x36] = make_instruction(0x36,Operation::ROL, addressing_mode::ZPX,   2, 6, 0);
+    instr_tbl[0x2E] = make_instruction(0x2E,Operation::ROL, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0x3E] = make_instruction(0x3E,Operation::ROL, addressing_mode::ABSX,  3, 7, 0);
 
-    instr_tbl[0x6A] = make_instruction(0x6A,operation::ROR, addressing_mode::Accum, 1, 2, 0);
-    instr_tbl[0x66] = make_instruction(0x66,operation::ROR, addressing_mode::ZP,    2, 5, 0);
-    instr_tbl[0x76] = make_instruction(0x76,operation::ROR, addressing_mode::ZPX,   2, 6, 0);
-    instr_tbl[0x6E] = make_instruction(0x6E,operation::ROR, addressing_mode::ABS,   3, 6, 0);
-    instr_tbl[0x7E] = make_instruction(0x7E,operation::ROR, addressing_mode::ABSX,  3, 7, 0);
+    instr_tbl[0x6A] = make_instruction(0x6A,Operation::ROR, addressing_mode::Accum, 1, 2, 0);
+    instr_tbl[0x66] = make_instruction(0x66,Operation::ROR, addressing_mode::ZP,    2, 5, 0);
+    instr_tbl[0x76] = make_instruction(0x76,Operation::ROR, addressing_mode::ZPX,   2, 6, 0);
+    instr_tbl[0x6E] = make_instruction(0x6E,Operation::ROR, addressing_mode::ABS,   3, 6, 0);
+    instr_tbl[0x7E] = make_instruction(0x7E,Operation::ROR, addressing_mode::ABSX,  3, 7, 0);
 
-    instr_tbl[0x40] = make_instruction(0x40,operation::RTI, addressing_mode::Impl,  1, 6, 0);
-    instr_tbl[0x60] = make_instruction(0x60,operation::RTS, addressing_mode::Impl,  1, 6, 0);
+    instr_tbl[0x40] = make_instruction(0x40,Operation::RTI, addressing_mode::Impl,  1, 6, 0);
+    instr_tbl[0x60] = make_instruction(0x60,Operation::RTS, addressing_mode::Impl,  1, 6, 0);
 
-    instr_tbl[0xE9] = make_instruction(0xE9,operation::SBC, addressing_mode::IMM,   2, 2, 0);
-    instr_tbl[0xE5] = make_instruction(0xE5,operation::SBC, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0xF5] = make_instruction(0xF5,operation::SBC, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0xED] = make_instruction(0xED,operation::SBC, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0xFD] = make_instruction(0xFD,operation::SBC, addressing_mode::ABSX,  3, 4, 1);
-    instr_tbl[0xF9] = make_instruction(0xF9,operation::SBC, addressing_mode::ABSY,  3, 4, 1);
-    instr_tbl[0xE1] = make_instruction(0xE1,operation::SBC, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0xF1] = make_instruction(0xF1,operation::SBC, addressing_mode::INDY,  2, 5, 1);
+    instr_tbl[0xE9] = make_instruction(0xE9,Operation::SBC, addressing_mode::IMM,   2, 2, 0);
+    instr_tbl[0xE5] = make_instruction(0xE5,Operation::SBC, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0xF5] = make_instruction(0xF5,Operation::SBC, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0xED] = make_instruction(0xED,Operation::SBC, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0xFD] = make_instruction(0xFD,Operation::SBC, addressing_mode::ABSX,  3, 4, 1);
+    instr_tbl[0xF9] = make_instruction(0xF9,Operation::SBC, addressing_mode::ABSY,  3, 4, 1);
+    instr_tbl[0xE1] = make_instruction(0xE1,Operation::SBC, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0xF1] = make_instruction(0xF1,Operation::SBC, addressing_mode::INDY,  2, 5, 1);
 
-    instr_tbl[0x38] = make_instruction(0x38,operation::SEC, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0xF8] = make_instruction(0xF8,operation::SED, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0x78] = make_instruction(0x78,operation::SEI, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x38] = make_instruction(0x38,Operation::SEC, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xF8] = make_instruction(0xF8,Operation::SED, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x78] = make_instruction(0x78,Operation::SEI, addressing_mode::Impl,  1, 2, 0);
 
-    instr_tbl[0x85] = make_instruction(0x85,operation::STA, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x95] = make_instruction(0x95,operation::STA, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0x8D] = make_instruction(0x8D,operation::STA, addressing_mode::ABS,   3, 4, 0);
-    instr_tbl[0x9D] = make_instruction(0x9D,operation::STA, addressing_mode::ABSX,  3, 5, 0);
-    instr_tbl[0x99] = make_instruction(0x99,operation::STA, addressing_mode::ABSY,  3, 5, 0);
-    instr_tbl[0x81] = make_instruction(0x81,operation::STA, addressing_mode::INDX,  2, 6, 0);
-    instr_tbl[0x91] = make_instruction(0x91,operation::STA, addressing_mode::INDY,  2, 6, 0);
+    instr_tbl[0x85] = make_instruction(0x85,Operation::STA, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x95] = make_instruction(0x95,Operation::STA, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0x8D] = make_instruction(0x8D,Operation::STA, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x9D] = make_instruction(0x9D,Operation::STA, addressing_mode::ABSX,  3, 5, 0);
+    instr_tbl[0x99] = make_instruction(0x99,Operation::STA, addressing_mode::ABSY,  3, 5, 0);
+    instr_tbl[0x81] = make_instruction(0x81,Operation::STA, addressing_mode::INDX,  2, 6, 0);
+    instr_tbl[0x91] = make_instruction(0x91,Operation::STA, addressing_mode::INDY,  2, 6, 0);
 
-    instr_tbl[0x86] = make_instruction(0x86,operation::STX, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x96] = make_instruction(0x96,operation::STX, addressing_mode::ZPY,   2, 4, 0);
-    instr_tbl[0x8E] = make_instruction(0x8E,operation::STX, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x86] = make_instruction(0x86,Operation::STX, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x96] = make_instruction(0x96,Operation::STX, addressing_mode::ZPY,   2, 4, 0);
+    instr_tbl[0x8E] = make_instruction(0x8E,Operation::STX, addressing_mode::ABS,   3, 4, 0);
 
-    instr_tbl[0x84] = make_instruction(0x84,operation::STY, addressing_mode::ZP,    2, 3, 0);
-    instr_tbl[0x94] = make_instruction(0x94,operation::STY, addressing_mode::ZPX,   2, 4, 0);
-    instr_tbl[0x8C] = make_instruction(0x8C,operation::STY, addressing_mode::ABS,   3, 4, 0);
+    instr_tbl[0x84] = make_instruction(0x84,Operation::STY, addressing_mode::ZP,    2, 3, 0);
+    instr_tbl[0x94] = make_instruction(0x94,Operation::STY, addressing_mode::ZPX,   2, 4, 0);
+    instr_tbl[0x8C] = make_instruction(0x8C,Operation::STY, addressing_mode::ABS,   3, 4, 0);
 
-    instr_tbl[0xAA] = make_instruction(0xAA,operation::TAX, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0xA8] = make_instruction(0xA8,operation::TAY, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0xBA] = make_instruction(0xBA,operation::TSX, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0x8A] = make_instruction(0x8A,operation::TXA, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0x9A] = make_instruction(0x9A,operation::TXS, addressing_mode::Impl,  1, 2, 0);
-    instr_tbl[0x98] = make_instruction(0x98,operation::TYA, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xAA] = make_instruction(0xAA,Operation::TAX, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xA8] = make_instruction(0xA8,Operation::TAY, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0xBA] = make_instruction(0xBA,Operation::TSX, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x8A] = make_instruction(0x8A,Operation::TXA, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x9A] = make_instruction(0x9A,Operation::TXS, addressing_mode::Impl,  1, 2, 0);
+    instr_tbl[0x98] = make_instruction(0x98,Operation::TYA, addressing_mode::Impl,  1, 2, 0);
 
 
      

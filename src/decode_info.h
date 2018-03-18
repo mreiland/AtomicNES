@@ -1,7 +1,7 @@
 #ifndef ATOM_NES_DECODE_INFO_H
 #define ATOM_NES_DECODE_INFO_H
 
-#include "operation.h"
+#include "Operation.h"
 #include "addressing_mode.h"
 #include "instruction.h"
 
