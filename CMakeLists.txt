@@ -15,7 +15,7 @@ set(ANES_SOURCES
   src/memory.cpp src/memory.h
 
 
-  src/opcode.h
+  src/operation.h
 )
 
 set(ANES_TEST_SOURCES

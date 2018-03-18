@@ -12,8 +12,8 @@ namespace executor {
   decode_info fetch_and_decode(cpu *cpu, memory *men) {
     decode_info info;
     
-    // examine memory, use stack pointer to grab next opcode
-    // use opcode to grab instruction
+    // examine memory, use stack pointer to grab next operation
+    // use operation to grab instruction
     // use instruction to determine addressing mode
     // use addressing mode to fill decode_info
     
