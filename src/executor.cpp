@@ -9,8 +9,8 @@ namespace executor {
   // decode_info will need to carry the instruction around with it, should just use a pointer
   // to the actual instruction to minimize copying
   //
-  decode_info fetch_and_decode(Cpu *cpu, memory *men) {
-    decode_info info;
+  DecodeInfo fetch_and_decode(Cpu *cpu, memory *men) {
+    DecodeInfo info;
     
     // examine memory, use stack pointer to grab next operation
     // use operation to grab instruction
@@ -19,6 +19,6 @@ namespace executor {
     
     return info;
   }
-  void execute(Cpu *cpu, memory *mem, decode_info decoded) {
+  void execute(Cpu *cpu, memory *mem, DecodeInfo decoded) {
   }
 }

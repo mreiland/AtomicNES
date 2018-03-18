@@ -16,7 +16,7 @@ int main() {
   // fetch ROM from HD
   
   Cpu cpu;
-  decode_info decoded;
+  DecodeInfo decoded;
   memory mem;
   
   executor::power_on(&cpu, &mem);

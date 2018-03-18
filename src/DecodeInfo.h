@@ -5,7 +5,7 @@
 #include "AddressingMode.h"
 #include "instruction.h"
 
-struct decode_info {
+struct DecodeInfo {
   Instruction *instruction;
   
   uint16_t addr1;

@@ -8,7 +8,7 @@ set(COMPILER_FEATURES cxx_std_17)
 set(ANES_SOURCES
   src/AddressingMode.h
   src/Cpu.h
-  src/decode_info.h
+  src/DecodeInfo.h
   src/executor.cpp src/executor.h
   src/instruction.h
   src/instructions.cpp src/instructions.h
