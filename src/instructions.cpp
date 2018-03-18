@@ -19,7 +19,7 @@ namespace {
     if(page_cycles < 0 || page_cycles > 2) throw "page_cycles is incorrect";
     
     Instruction instr  = { 
-      .opcode_value = value,
+      .opcode = value,
       .opcode_type = opc,
       .addr_mode_type = mode,
       .len = len,

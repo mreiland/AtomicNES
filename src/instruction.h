@@ -5,7 +5,7 @@
 #include "operation.h"
 
 struct Instruction {
-  uint8_t opcode_value;
+  uint8_t opcode;
   
   operation opcode_type;
   addressing_mode addr_mode_type;
