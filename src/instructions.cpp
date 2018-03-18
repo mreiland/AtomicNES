@@ -14,8 +14,8 @@ namespace {
     
     Instruction instr  = { 
       .opcode_value = value,
-      .opcode_class = opc,
-      .addr_mode_class = mode,
+      .opcode_type = opc,
+      .addr_mode_type = mode,
       .len = len,
       .cycles = cycles,
       .page_cycles = page_cycles

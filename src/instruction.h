@@ -7,8 +7,8 @@
 struct Instruction {
   int opcode_value;
   
-  opcode opcode_class;
-  addr_mode addr_mode_class;
+  opcode opcode_type;
+  addr_mode addr_mode_type;
   
   int len;
   int cycles;
