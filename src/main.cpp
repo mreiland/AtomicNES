@@ -11,7 +11,7 @@
 #include "Memory.h"
 
 int main() {
-  instructions::initialize();
+  initialize_instructions();
   
   // fetch ROM from HD
   
