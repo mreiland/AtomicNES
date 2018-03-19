@@ -5,11 +5,14 @@
 
 class Memory {
 public:
-  uint8_t get();
-  uint8_t get16();
+  uint8_t read8(uint16_t);
+  uint8_t read16(uint16_t);
+
+  void write8(uint16_t, uint8_t);
+  void write16(uint16_t, uint16_t);
 
 private:
-  //std::array<uint8_t, 65535> mem;
+  std::array<uint8_t, 65535> mem;
 };
 
 #endif
