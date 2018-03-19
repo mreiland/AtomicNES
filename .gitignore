@@ -1,3 +1,5 @@
+resources/*.nes
+
 build/
 *.swp
 *.kate-swp
