@@ -3,7 +3,7 @@
 #include <array>
 
 namespace {
-  std::array<Instruction, 256> instr_tbl;
+  std::array<Instruction, 255> instr_tbl;
 
   Instruction make_instruction(uint8_t value,
                                Operation opc,
