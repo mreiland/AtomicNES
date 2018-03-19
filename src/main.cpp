@@ -9,7 +9,7 @@
 #include "Cpu.h"
 #include "Executor.h"
 #include "Memory.h"
-#include "rom_loader.h"
+#include "RomLoader.h"
 
 int main() {
   initialize_instructions();

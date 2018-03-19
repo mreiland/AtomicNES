@@ -14,7 +14,7 @@ set(ANES_SOURCES
   src/Memory.cpp src/Memory.h
   src/Operation.h
 
-  src/rom_loader.cpp src/rom_loader.h)
+  src/RomLoader.cpp src/RomLoader.h)
 
 set(ANES_TEST_SOURCES
   tests/main.cpp
