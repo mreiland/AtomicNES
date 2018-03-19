@@ -36,20 +36,20 @@ TEST_CASE("read/write 16 bit values") {
   Memory mem;
 
   // test the boundaries at the beginning of memory
-  mem.write16(0x00, 0xFF);
-  REQUIRE(mem.read16(0x00) == 0xFF);
+  mem.write16(0x00, 0xFFFF);
+  REQUIRE(mem.read16(0x00) == 0xFFFF);
 
-  mem.write16(0x02, 0xFA);
-  REQUIRE(mem.read16(0x00) == 0xFF);
-  REQUIRE(mem.read16(0x02) == 0xFA);
+  mem.write16(0x02, 0xFFFA);
+  REQUIRE(mem.read16(0x00) == 0xFFFF);
+  REQUIRE(mem.read16(0x02) == 0xFFFA);
 
   // test the boundaries at the end of memory
-  mem.write16(0xFFFD, 0xFF);
-  REQUIRE(mem.read16(0xFFFD) == 0xFF);
+  mem.write16(0xFFFD, 0xFFFF);
+  REQUIRE(mem.read16(0xFFFD) == 0xFFFF);
 
-  mem.write16(0xFFFB, 0xFA);
-  REQUIRE(mem.read16(0xFFFD) == 0xFF);
-  REQUIRE(mem.read16(0xFFFB) == 0xFA);
+  mem.write16(0xFFFB, 0xFFFA);
+  REQUIRE(mem.read16(0xFFFD) == 0xFFFF);
+  REQUIRE(mem.read16(0xFFFB) == 0xFFFA);
 
   // we test writing a 16 bit value to the very last byte in memory.  We expect this
   // to wrap and write to the very first byte in memory so in preparation we write 0
@@ -59,7 +59,7 @@ TEST_CASE("read/write 16 bit values") {
   mem.write16(0xFFFF, 0xFFFF);
   REQUIRE(mem.read16(0xFFFF) == 0xFFFF);
 
-  REQUIRE(mem.read8(0x00) == 0xFF); // failing
+  REQUIRE(mem.read8(0x00) == 0xFF);
   REQUIRE(mem.read8(0xFFFF) == 0xFF);
 }
 
