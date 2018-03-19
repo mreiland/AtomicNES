@@ -5,7 +5,7 @@
 #include "DecodeInfo.h"
 #include "Memory.h"
 
-namespace executor {
+namespace Executor {
   void restart(Cpu *, Memory *);
   void power_on(Cpu *, Memory *);
   

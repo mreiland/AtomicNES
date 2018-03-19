@@ -1,6 +1,6 @@
-#include "executor.h"
+#include "Executor.h"
 
-namespace executor {
+namespace Executor {
   void restart(Cpu *cpu, Memory *mem) {
   }
   void power_on(Cpu *cpu, Memory *mem) {

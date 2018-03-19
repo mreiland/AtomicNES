@@ -9,7 +9,7 @@ set(ANES_SOURCES
   src/AddressingMode.h
   src/Cpu.h
   src/DecodeInfo.h
-  src/executor.cpp src/executor.h
+  src/Executor.cpp src/Executor.h
   src/Instruction.cpp src/Instruction.h
   src/Memory.cpp src/Memory.h
   src/Operation.h
