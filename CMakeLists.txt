@@ -18,6 +18,7 @@ set(ANES_SOURCES
 
 set(ANES_TEST_SOURCES
   tests/main.cpp
+  tests/Instruction.cpp
   tests/Memory.cpp)
  
 add_library(libaNES ${ANES_SOURCES})
