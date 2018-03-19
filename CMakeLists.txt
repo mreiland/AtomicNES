@@ -14,11 +14,11 @@ set(ANES_SOURCES
   src/Memory.cpp src/Memory.h
 
 
-  src/Operation.h
-)
+  src/Operation.h)
 
 set(ANES_TEST_SOURCES
-  tests/main.cpp)
+  tests/main.cpp
+  tests/Memory.cpp)
  
 add_library(libaNES ${ANES_SOURCES})
 add_executable(aNES src/main.cpp)
@@ -27,8 +27,7 @@ add_executable(tests ${ANES_TEST_SOURCES})
 set(COMMON_INCLUDES
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/lib/header-only
-  ${CMAKE_SOURCE_DIR}/lib
-)
+  ${CMAKE_SOURCE_DIR}/lib)
  
 set(COMMON_LIBRARIES 
   fmt::fmt)
