@@ -9,6 +9,7 @@
 #include "Cpu.h"
 #include "executor.h"
 #include "Memory.h"
+#include "rom_loader.h"
 
 int main() {
   initialize_instructions();
@@ -17,7 +18,7 @@ int main() {
   
   Cpu cpu;
   DecodeInfo decoded;
-  Memory mem;
+  Memory mem = load_ines("");
   
   executor::power_on(&cpu, &mem);
   
