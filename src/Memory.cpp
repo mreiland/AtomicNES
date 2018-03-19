@@ -43,17 +43,12 @@ void Memory::write16(uint16_t addr, uint16_t val) {
 
 namespace {
   uint16_t decode_addr(uint16_t addr) {
-    if (addr <= 0x07FF) return addr;
-
-    // these ranges mirror the bottom 2KB
-    if (addr >= 0x0800 && addr <= 0x0FFF) return addr - 0x8000;
-    if (addr >= 0x1000 && addr <= 0x17FF) return addr - (0x8000 * 2);
-    if (addr >= 0x1800 && addr <= 0x1FFF) return addr - (0x8000 * 3);
+    if(addr <= 0x1FFF) return uint16_t(addr & 0x07FF);
 
     if (addr >= 0x2000 && addr <= 0x2007) throw "PPU is unimplemented";
-    if (addr >= 0x2008 && addr <= 0x3FFF) return 0x2000 + ((addr - 0x2000) & 0x8);
+    if (addr >= 0x2008 && addr <= 0x3FFF) return uint16_t(0x2000 + (addr & 0x8));
     if (addr >= 0x4000 && addr <= 0x4017) throw "APU and IO registers unimplemented";
     if (addr >= 0x4018 && addr <= 0x401F) throw "APU and IO functionality that is normally disabled";
-    if (addr > -0x4020) return addr;
+    if (addr > 0x4020) return addr;
   }
 }
