@@ -4,7 +4,7 @@
 #include "fmt/format.h"
 #include "fmt/printf.h"
 
-#include "instruction.h"
+#include "Instruction.h"
 
 #include "Cpu.h"
 #include "executor.h"
