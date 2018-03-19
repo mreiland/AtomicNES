@@ -12,9 +12,9 @@ set(ANES_SOURCES
   src/executor.cpp src/executor.h
   src/Instruction.cpp src/Instruction.h
   src/Memory.cpp src/Memory.h
+  src/Operation.h
 
-
-  src/Operation.h)
+  src/rom_loader.cpp src/rom_loader.h)
 
 set(ANES_TEST_SOURCES
   tests/main.cpp
