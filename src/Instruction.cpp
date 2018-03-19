@@ -12,12 +12,6 @@ namespace {
                                uint8_t cycles,
                                uint8_t page_cycles)
   {
-
-    if(value < 0 || value > 256)           throw "value is incorrect";
-    if(len < 0 || len > 2)                 throw "len is incorrect";
-    if(cycles < 0 || cycles > 7)           throw "cycles is incorrect";
-    if(page_cycles < 0 || page_cycles > 2) throw "page_cycles is incorrect";
-
     Instruction instr  = {
       .opcode = value,
       .operation = opc,
