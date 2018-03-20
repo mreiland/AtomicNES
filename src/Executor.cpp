@@ -2,8 +2,12 @@
 
 namespace Executor {
   void reset(Cpu *cpu, Memory *mem) {
+    cpu->PC = mem->read16(0xFFFD);
+    cpu->SP = 0xFD;
+    cpu->set_flags(0x24);
   }
   void power_on(Cpu *cpu, Memory *mem) {
+    reset(cpu,mem);
   }
   
   // decode_info will need to carry the instruction around with it, should just use a pointer
