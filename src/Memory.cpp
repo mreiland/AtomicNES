@@ -4,20 +4,6 @@ namespace {
   uint16_t decode_addr(uint16_t addr);
 }
 
-Memory::Memory() {
-  this->mem.reserve(65535);
-}
-Memory::Memory(std::vector<uint8_t> vec) {
-  this->mem = vec;
-}
-Memory::Memory(const Memory &rhs) {
-  this->mem = rhs.mem;
-}
-
-Memory &Memory::operator=(const Memory &rhs) {
-  this->mem = rhs.mem;
-}
-
 uint8_t Memory::read8(uint16_t addr) {
   addr = decode_addr(addr);
   return this->mem[addr];
@@ -39,6 +25,11 @@ void Memory::write16(uint16_t addr, uint16_t val) {
   this->mem[decoded_addr] = (uint8_t)val;
   this->mem[decoded_addr+1 & 0xFFFF] = uint8_t(val >> 8);
 }
+
+
+std::array<uint8_t,65536> &Memory::raw() {
+  return this->mem;
+};
 
 
 namespace {
