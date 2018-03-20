@@ -1,7 +1,7 @@
 #include "Executor.h"
 
 namespace Executor {
-  void restart(Cpu *cpu, Memory *mem) {
+  void reset(Cpu *cpu, Memory *mem) {
   }
   void power_on(Cpu *cpu, Memory *mem) {
   }

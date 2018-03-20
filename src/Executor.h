@@ -6,7 +6,7 @@
 #include "Memory.h"
 
 namespace Executor {
-  void restart(Cpu *, Memory *);
+  void reset(Cpu *, Memory *);
   void power_on(Cpu *, Memory *);
   
   DecodeInfo fetch_and_decode(Cpu *, Memory *);
