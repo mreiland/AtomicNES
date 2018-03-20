@@ -18,7 +18,7 @@ int main() {
   
   Cpu cpu;
   DecodeInfo decoded;
-  Memory mem = load_ines("");
+  Memory mem = load_ines("../resources/nestest.nes");
   
   Executor::power_on(&cpu, &mem);
   
