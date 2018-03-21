@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(atomicnes)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
+
 add_subdirectory(lib/fmt)
 
 set(COMPILER_FEATURES cxx_std_17)
