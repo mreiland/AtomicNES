@@ -1,4 +1,5 @@
 resources/*.nes
+.ycm_extra_conf.py
 
 build/
 *.swp
