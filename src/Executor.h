@@ -9,8 +9,8 @@ namespace Executor {
   void reset(Cpu *, Memory *);
   void power_on(Cpu *, Memory *);
   
-  DecodeInfo fetch_and_decode(Cpu *, Memory *);
-  void execute(Cpu *, Memory *, DecodeInfo);
+  void fetch_and_decode(const Cpu &, const Memory &, DecodeInfo *);
+  void execute(Cpu *, Memory *, const DecodeInfo &);
 }
 
 #endif

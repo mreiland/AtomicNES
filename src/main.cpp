@@ -7,7 +7,7 @@
 #include "Instruction.h"
 
 #include "Cpu.h"
-#include "Executor.h"
+#include "Executor.h" 
 #include "Memory.h"
 #include "RomLoader.h"
 
@@ -23,7 +23,7 @@ int main() {
   Executor::power_on(&cpu, &mem);
   
   while(true) {
-    decoded = Executor::fetch_and_decode(&cpu, &mem);
+    Executor::fetch_and_decode(cpu, mem, &decoded);
     //log_info(decode_info);
     Executor::execute(&cpu, &mem, decoded);
   }

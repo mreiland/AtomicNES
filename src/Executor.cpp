@@ -13,16 +13,12 @@ namespace Executor {
   // decode_info will need to carry the instruction around with it, should just use a pointer
   // to the actual instruction to minimize copying
   //
-  DecodeInfo fetch_and_decode(Cpu *cpu, Memory *men) {
-    DecodeInfo info;
-    
+  void fetch_and_decode(const Cpu &cpu, const Memory &mem, DecodeInfo *info) {
     // examine memory, use stack pointer to grab next operation
     // use operation to grab instruction
     // use instruction to determine addressing mode
     // use addressing mode to fill decode_info
-    
-    return info;
   }
-  void execute(Cpu *cpu, Memory *mem, DecodeInfo decoded) {
+  void execute(Cpu *cpu, Memory *mem, const DecodeInfo &decoded) {
   }
 }
