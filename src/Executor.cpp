@@ -21,11 +21,16 @@ namespace Executor {
 
     switch(info->instruction->mode) {
       case AddressingMode::Accum: throw error::unimplemented_error("Accumulator addressing mode is not implemented"); break;
-      case AddressingMode::IMM:   throw error::unimplemented_error("Immediate addressing mode is not implemented"); break;
+      case AddressingMode::IMM:
+        info->addr1 = 0;
+        info->val1 = mem.read8(cpu.PC+1);
+        break;
       case AddressingMode::Impl:
         break;
       case AddressingMode::Rel:   throw error::unimplemented_error("Relative addressing mode is not implemented"); break;
-      case AddressingMode::ZP:    throw error::unimplemented_error("ZeroPage addressing mode is not implemented"); break;
+      case AddressingMode::ZP:
+        info->addr1 = mem.read8(cpu.PC+1);
+        break;
       case AddressingMode::ZPX:   throw error::unimplemented_error("ZeroPage,X addressing mode is not implemented"); break;
       case AddressingMode::ZPY:   throw error::unimplemented_error("ZeroPage,Y addressing mode is not implemented"); break;
       case AddressingMode::ABS:   
@@ -77,7 +82,11 @@ namespace Executor {
         break;
       case Operation::JSR: throw error::unimplemented_error("JSR operation is not implemented"); break; 
       case Operation::LDA: throw error::unimplemented_error("LDA operation is not implemented"); break; 
-      case Operation::LDX: throw error::unimplemented_error("LDX operation is not implemented"); break; 
+      case Operation::LDX:
+        cpu->x = decoded.val1;
+        cpu->Z = cpu->x == 0;
+        cpu->N = cpu->x > 127;
+        break;
       case Operation::LDY: throw error::unimplemented_error("LDY operation is not implemented"); break; 
       case Operation::LSR: throw error::unimplemented_error("LSR operation is not implemented"); break; 
       case Operation::NOP: throw error::unimplemented_error("NOP operation is not implemented"); break; 
@@ -95,7 +104,9 @@ namespace Executor {
       case Operation::SED: throw error::unimplemented_error("SED operation is not implemented"); break; 
       case Operation::SEI: throw error::unimplemented_error("SEI operation is not implemented"); break; 
       case Operation::STA: throw error::unimplemented_error("STA operation is not implemented"); break; 
-      case Operation::STX: throw error::unimplemented_error("STX operation is not implemented"); break; 
+      case Operation::STX:
+        mem->write8(decoded.addr1,cpu->x);
+        break;
       case Operation::STY: throw error::unimplemented_error("STY operation is not implemented"); break; 
       case Operation::TAX: throw error::unimplemented_error("TAX operation is not implemented"); break; 
       case Operation::TAY: throw error::unimplemented_error("TAY operation is not implemented"); break; 
