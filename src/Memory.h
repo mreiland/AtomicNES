@@ -1,5 +1,5 @@
-#ifndef ATOM_NES_MEMORY_H
-#define ATOM_NES_MEMORY_H
+#ifndef ATOMIC_NES_MEMORY_H
+#define ATOMIC_NES_MEMORY_H
 
 #include <array>
 #include <vector>

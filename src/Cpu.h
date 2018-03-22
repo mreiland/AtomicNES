@@ -1,5 +1,5 @@
-#ifndef ATOM_NES_CPU_H
-#define ATOM_NES_CPU_H
+#ifndef ATOMIC_NES_CPU_H
+#define ATOMIC_NES_CPU_H
 
 #include <cstdint>
 

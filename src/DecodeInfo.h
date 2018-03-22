@@ -1,5 +1,5 @@
-#ifndef ATOM_NES_DECODE_INFO_H
-#define ATOM_NES_DECODE_INFO_H
+#ifndef ATOMIC_NES_DECODE_INFO_H
+#define ATOMIC_NES_DECODE_INFO_H
 
 #include "Operation.h"
 #include "AddressingMode.h"

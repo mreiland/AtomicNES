@@ -1,5 +1,5 @@
-#ifndef ATOM_NES_OPCODES_H
-#define ATOM_NES_OPCODES_H
+#ifndef ATOMIC_NES_OPCODES_H
+#define ATOMIC_NES_OPCODES_H
 
 #include <string>
 

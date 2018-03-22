@@ -1,5 +1,5 @@
-#ifndef ATOM_NES_INSTRUCTION_H
-#define ATOM_NES_INSTRUCTION_H
+#ifndef ATOMIC_NES_INSTRUCTION_H
+#define ATOMIC_NES_INSTRUCTION_H
 
 #include "AddressingMode.h"
 #include "Operation.h"

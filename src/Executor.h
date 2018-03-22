@@ -1,5 +1,5 @@
-#ifndef ATOM_NES_EXECUTOR_H
-#define ATOM_NES_EXECUTOR_H
+#ifndef ATOMIC_NES_EXECUTOR_H
+#define ATOMIC_NES_EXECUTOR_H
 
 #include "Cpu.h"
 #include "DecodeInfo.h"
