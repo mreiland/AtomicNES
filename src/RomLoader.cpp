@@ -35,6 +35,9 @@ Memory load_ines(std::string filepath) {
   auto max_size = std::numeric_limits<uint16_t>::max()*2; // give us some leeway
   std::vector<uint8_t> bin = load_binaryfile(filepath, (size_t)max_size);
 
+  if(bin.size() == 0)
+    throw "file was empty or nonexistent";
+
   auto *h = (InesHeader*)&bin[0];
 
   if(h->ines_identifier != 0x1A53454E)
@@ -63,7 +66,7 @@ namespace {
     Memory mem;
 
     // we mirror the PRG rom if there's only 1 prg rom bank, which is all we support at the moment.
-    //
+    
     std::memcpy(&(mem.raw()[0x8000]), &bin[16], prg_rombank_size);
     std::memcpy(&(mem.raw()[0xC000]), &bin[16], prg_rombank_size);
 
