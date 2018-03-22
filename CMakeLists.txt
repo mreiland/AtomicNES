@@ -8,6 +8,8 @@ add_subdirectory(lib/fmt)
 set(COMPILER_FEATURES cxx_std_17)
 
 set(ANES_SOURCES
+  src/error/unimplemented_error.cpp src/error/unimplemented_error.h
+
   src/AddressingMode.h
   src/Cpu.h
   src/DecodeInfo.h
