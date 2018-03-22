@@ -36,7 +36,7 @@ struct Cpu {
     N = ((flags >> 7) & 1) > 0;
   }
 
-  inline uint8_t get_flags() {
+  inline uint8_t get_flags() const {
     uint8_t flags = 0;
     flags = flags + (C << 0);
     flags = flags + (Z << 1);
