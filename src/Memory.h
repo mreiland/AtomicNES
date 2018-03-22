@@ -6,8 +6,8 @@
 
 class Memory {
 public:
-  uint8_t read8(uint16_t);
-  uint16_t read16(uint16_t);
+  uint8_t read8(uint16_t) const;
+  uint16_t read16(uint16_t) const;
 
   void write8(uint16_t, uint8_t);
   void write16(uint16_t, uint16_t);
