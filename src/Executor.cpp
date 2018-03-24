@@ -53,9 +53,13 @@ namespace Executor {
         break;
       case AddressingMode::Impl:
         break;
-      case AddressingMode::Rel:   throw error::unimplemented_error("Relative addressing mode is not implemented"); break;
+      case AddressingMode::Rel:
+        info->val1 = mem.read8(cpu.PC+1);
+        info->addr1 = cpu.PC+(int8_t)info->val1;
+        break;
       case AddressingMode::ZP:
         info->addr1 = mem.read8(cpu.PC+1);
+        info->val1 = mem.read8(info->addr1);
         break;
       case AddressingMode::ZPX:   throw error::unimplemented_error("ZeroPage,X addressing mode is not implemented"); break;
       case AddressingMode::ZPY:   throw error::unimplemented_error("ZeroPage,Y addressing mode is not implemented"); break;
@@ -76,23 +80,52 @@ namespace Executor {
 
     switch(decoded.instruction->operation) {
       case Operation::ADC: throw error::unimplemented_error("ADC operation is not implemented"); break; 
-      case Operation::AND: throw error::unimplemented_error("AND operation is not implemented"); break; 
+      case Operation::AND:
+        cpu->a = cpu->a & decoded.val1;
+        cpu->set_Z(cpu->a);
+        cpu->set_N(cpu->a);
+        break;
       case Operation::ASL: throw error::unimplemented_error("ASL operation is not implemented"); break; 
-      case Operation::BCC: throw error::unimplemented_error("BCC operation is not implemented"); break; 
-      case Operation::BCS: throw error::unimplemented_error("BCS operation is not implemented"); break; 
-      case Operation::BEQ: throw error::unimplemented_error("BEQ operation is not implemented"); break; 
-      case Operation::BIT: throw error::unimplemented_error("BIT operation is not implemented"); break; 
+      case Operation::BCC:
+        if(!cpu->C) cpu->PC = decoded.addr1;
+        break;
+      case Operation::BCS:
+        if(cpu->C) cpu->PC = decoded.addr1;
+        break;
+      case Operation::BEQ:
+        if(cpu->Z) cpu->PC = decoded.addr1;
+        break;
+      case Operation::BIT: {
+        auto result = cpu->a & decoded.val1;
+        cpu->V = (result >> 6) & 1;
+        cpu->set_Z(result);
+        break;
+      }
       case Operation::BMI: throw error::unimplemented_error("BMI operation is not implemented"); break; 
-      case Operation::BNE: throw error::unimplemented_error("BNE operation is not implemented"); break; 
-      case Operation::BPL: throw error::unimplemented_error("BPL operation is not implemented"); break; 
+      case Operation::BNE:
+        if(!cpu->Z) cpu->PC = decoded.addr1;
+        break;
+      case Operation::BPL:
+        if(!cpu->N) cpu->PC = decoded.addr1;
+        break;
       case Operation::BRK: throw error::unimplemented_error("BRK operation is not implemented"); break; 
-      case Operation::BVC: throw error::unimplemented_error("BVC operation is not implemented"); break; 
-      case Operation::BVS: throw error::unimplemented_error("BVS operation is not implemented"); break; 
-      case Operation::CLC: throw error::unimplemented_error("CLC operation is not implemented"); break; 
-      case Operation::CLD: throw error::unimplemented_error("CLD operation is not implemented"); break; 
+      case Operation::BVC:
+        if(!cpu->V) cpu->PC = decoded.addr1;
+        break;
+      case Operation::BVS:
+        if(cpu->V) cpu->PC = decoded.addr1;
+        break;
+      case Operation::CLC:
+        cpu->C = false;
+        break;
+      case Operation::CLD:
+        cpu->D = false;
+        break;
       case Operation::CLI: throw error::unimplemented_error("CLI operation is not implemented"); break; 
       case Operation::CLV: throw error::unimplemented_error("CLV operation is not implemented"); break; 
-      case Operation::CMP: throw error::unimplemented_error("CMP operation is not implemented"); break; 
+      case Operation::CMP:
+        cpu->compare(cpu->a, decoded.val1);
+        break;
       case Operation::CPX: throw error::unimplemented_error("CPX operation is not implemented"); break; 
       case Operation::CPY: throw error::unimplemented_error("CPY operation is not implemented"); break; 
       case Operation::DEC: throw error::unimplemented_error("DEC operation is not implemented"); break; 
@@ -106,30 +139,61 @@ namespace Executor {
         cpu->PC = decoded.addr1;
         pc_increment = 0;
         break;
-      case Operation::JSR: throw error::unimplemented_error("JSR operation is not implemented"); break; 
-      case Operation::LDA: throw error::unimplemented_error("LDA operation is not implemented"); break; 
+      case Operation::JSR:
+        // pushes 1 before the next instruction so when we pop the PC will increment and will be 
+        // pointed at the next opcode
+        //
+        stack_push16(cpu, mem, cpu->PC + decoded.instruction->len-1);
+        cpu->PC = decoded.addr1;
+        pc_increment = 0;
+        break;
+      case Operation::LDA:
+        cpu->a = decoded.val1;
+        cpu->set_Z(cpu->a);
+        cpu->set_N(cpu->a);
+        break;
       case Operation::LDX:
         cpu->x = decoded.val1;
-        cpu->Z = cpu->x == 0;
-        cpu->N = cpu->x > 127;
+        cpu->set_Z(cpu->x);
+        cpu->set_N(cpu->x);
         break;
       case Operation::LDY: throw error::unimplemented_error("LDY operation is not implemented"); break; 
       case Operation::LSR: throw error::unimplemented_error("LSR operation is not implemented"); break; 
-      case Operation::NOP: throw error::unimplemented_error("NOP operation is not implemented"); break; 
+      case Operation::NOP:
+        break;
       case Operation::ORA: throw error::unimplemented_error("ORA operation is not implemented"); break; 
       case Operation::PHA: throw error::unimplemented_error("PHA operation is not implemented"); break; 
-      case Operation::PHP: throw error::unimplemented_error("PHP operation is not implemented"); break; 
-      case Operation::PLA: throw error::unimplemented_error("PLA operation is not implemented"); break; 
+      case Operation::PHP: {
+        auto result = cpu->get_flags();
+        stack_push8(cpu,mem,result | 0x1F);
+        break;
+      }
+      case Operation::PLA:
+        cpu->a = stack_pop8(cpu,mem);
+        cpu->set_Z(cpu->a);
+        cpu->set_N(cpu->a);
+        break;
       case Operation::PLP: throw error::unimplemented_error("PLP operation is not implemented"); break; 
       case Operation::ROL: throw error::unimplemented_error("ROL operation is not implemented"); break; 
       case Operation::ROR: throw error::unimplemented_error("ROR operation is not implemented"); break; 
       case Operation::RTI: throw error::unimplemented_error("RTI operation is not implemented"); break; 
-      case Operation::RTS: throw error::unimplemented_error("RTS operation is not implemented"); break; 
+      case Operation::RTS:
+        cpu->PC = stack_pop16(cpu, mem) + 1;
+        pc_increment = 0;
+        break;
       case Operation::SBC: throw error::unimplemented_error("SBC operation is not implemented"); break; 
-      case Operation::SEC: throw error::unimplemented_error("SEC operation is not implemented"); break; 
-      case Operation::SED: throw error::unimplemented_error("SED operation is not implemented"); break; 
-      case Operation::SEI: throw error::unimplemented_error("SEI operation is not implemented"); break; 
-      case Operation::STA: throw error::unimplemented_error("STA operation is not implemented"); break; 
+      case Operation::SEC:
+        cpu->C = true;
+        break;
+      case Operation::SED:
+        cpu->D = true;
+        break;
+      case Operation::SEI:
+        cpu->I = true;
+        break;
+      case Operation::STA:
+        mem->write8(decoded.addr1,cpu->a);
+        break;
       case Operation::STX:
         mem->write8(decoded.addr1,cpu->x);
         break;
