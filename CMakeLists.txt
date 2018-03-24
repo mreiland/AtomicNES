@@ -13,6 +13,7 @@ set(ANES_SOURCES
   src/logger/nestest.cpp src/logger/nestest.h
 
   src/AddressingMode.h
+  src/Debugger.cpp src/Debugger.h
   src/Cpu.h
   src/DecodeInfo.h
   src/Executor.cpp src/Executor.h
