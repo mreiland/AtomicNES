@@ -24,7 +24,6 @@ struct Cpu {
 
 
   // note: bit 5 is always set to 0, but we leave the code in for clarity
-
   inline void set_flags(uint8_t flags) {
     C = ((flags >> 0) & 1) > 0;
     Z = ((flags >> 1) & 1) > 0;
@@ -48,6 +47,20 @@ struct Cpu {
     flags = flags + (N << 7);
 
     return flags;
+  }
+
+  inline void set_Z(uint8_t val) {
+    this->Z = val == 0;
+  }
+  inline void set_N(uint8_t val) {
+    this->N = val > 127;
+  }
+
+  inline void compare(uint8_t a, uint8_t b) {
+    uint8_t val = a-b;
+    this->set_Z(val);
+    this->set_N(val);
+    this->C = a >= b;
   }
 };
 
