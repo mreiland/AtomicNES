@@ -3,6 +3,9 @@
 #include "fmt/format.h"
 #include "error/unimplemented_error.h"
 
+#include <iomanip>
+#include <iostream>
+
 using namespace logger;
 
 NesTest::NesTest(const std::string &logfile) {
@@ -22,29 +25,34 @@ void NesTest::log(const Cpu &cpu, const Memory &mem, const DecodeInfo &decoded) 
   if(decoded.instruction->len > 1) fout << fmt::format("{:>02X} ", mem.read8(cpu.PC+1));
   if(decoded.instruction->len > 2) fout << fmt::format("{:>02X}  ", mem.read8(cpu.PC+2));
 
-  if(decoded.instruction->len == 1) fout << "         ";
+  if(decoded.instruction->len == 1) fout << "       ";
   if(decoded.instruction->len == 2) fout << "    ";
 
   fout << fmt::format("{} ", to_string(decoded.instruction->operation));
-  std::string extra_space = "";
+  std::string str = "";
 
   switch(decoded.instruction->mode) {
     case AddressingMode::Accum: throw error::unimplemented_error("Accumulator addressing mode is not implemented IN THE LOGGER"); break;
     case AddressingMode::IMM:
-      fout << fmt::format("#${:>02X} ", decoded.val1);
-      extra_space = "    ";
+      str = fmt::format("#${:>02X} ", decoded.val1);
       break;
     case AddressingMode::Impl:
       break;
-    case AddressingMode::Rel:   throw error::unimplemented_error("Relative addressing mode is not implemented IN THE LOGGER"); break;
+    case AddressingMode::Rel:
+      // the PC will typically be incremented after the jump and the 6502 relies on this behavior
+      // to get a larger range without having to store more bytes.  This displays the "true"
+      // address even though the actual given address is a few bytes back
+      //
+      if(decoded.val1 > 127) str = fmt::format("${:>02X} ", decoded.addr1 - decoded.instruction->len);
+      else                   str = fmt::format("${:>02X} ", decoded.addr1 + decoded.instruction->len);
+      break;
     case AddressingMode::ZP:
-      fout << fmt::format("${:>02X} = {:>02X} ", decoded.addr1, decoded.val1);
+      str = fmt::format("${:>02X} = {:>02X} ", decoded.addr1, decoded.val1);
       break;
     case AddressingMode::ZPX:   throw error::unimplemented_error("ZeroPage,X addressing mode is not implemented IN THE LOGGER"); break;
     case AddressingMode::ZPY:   throw error::unimplemented_error("ZeroPage,Y addressing mode is not implemented IN THE LOGGER"); break;
     case AddressingMode::ABS:   
-      fout << fmt::format("${:>02X}{:>02X} ", mem.read8(cpu.PC+2), mem.read8(cpu.PC+1));
-      extra_space = "   ";
+      str = fmt::format("${:>02X}{:>02X} ", mem.read8(cpu.PC+2), mem.read8(cpu.PC+1));
       break;
     case AddressingMode::ABSX:  throw error::unimplemented_error("Absolute,X addressing mode is not implemented IN THE LOGGER"); break;
     case AddressingMode::ABSY:  throw error::unimplemented_error("Absolute,Y  addressing mode is not implemented IN THE LOGGER"); break;
@@ -52,9 +60,10 @@ void NesTest::log(const Cpu &cpu, const Memory &mem, const DecodeInfo &decoded) 
     case AddressingMode::INDX:  throw error::unimplemented_error("Indirect,X addressing mode is not implemented IN THE LOGGER"); break;
     case AddressingMode::INDY:  throw error::unimplemented_error("Indirect,Y addressing mode is not implemented IN THE LOGGER"); break;
   }
+  auto spaces_needed = 33 - str.length();
 
-  fout << "                   " + extra_space;;
-  fout << fmt::format("A:{:>02X} ", cpu.a);
+  fout << str;
+  fout << std::setw(spaces_needed) << fmt::format("A:{:>02X} ", cpu.a);
   fout << fmt::format("X:{:>02X} ", cpu.x);
   fout << fmt::format("Y:{:>02X} ", cpu.y);
   fout << fmt::format("P:{:>02X} ", cpu.get_flags());
