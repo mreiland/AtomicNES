@@ -32,33 +32,35 @@ uint16_t Debugger::get_pc_breakpoint() {
 }
 void Debugger::debug(Cpu *cpu, Memory *mem, const DecodeInfo &decoded) {
   push_frame(this->frames, this->max_frames, cpu,mem,decoded);
-  this->frame_iter = this->frames.end();
   if(cpu->PC != this->pc_breakpoint && !this->is_debugging) return;
 
   this->is_debugging = true;
+  this->frame_iter = this->frames.end();
 
   display_context(*cpu,*mem,decoded);
-  auto cmd = get_input();
+  auto cmd = DbgCommands::DisplayContext;
 
-  switch(cmd) {
-    case DbgCommands::DisplayContext: display_context(*cpu,*mem,decoded); break;
-    case DbgCommands::Run:
-      this->is_debugging = false;
-      break;
-    case DbgCommands::StepBack:
-      if(this->frames.empty())
-        fmt::print("No history to go back to");
-      else {
-        this->time_machine_debug(cpu,mem,decoded);
-      }
-      break;
-    case DbgCommands::StepForward:
-      break;
-    case DbgCommands::DisplayAllFrames:
-      display_all_frames(this->frames, "[ALL] ");
-      break;
+  while(cmd == DbgCommands::DisplayContext || cmd == DbgCommands::DisplayAllFrames) {
+    cmd = get_input();
+    switch(cmd) {
+      case DbgCommands::DisplayContext:
+        display_context(*cpu,*mem,decoded);
+        fmt::print("\n\n");
+        continue;
+      case DbgCommands::Run:
+        this->is_debugging = false;
+        continue;
+      case DbgCommands::StepBack:
+        if(this->frames.empty()) fmt::print("No history to go back to");
+        else                     this->time_machine_debug(cpu,mem,decoded);
+        continue;
+      case DbgCommands::StepForward:
+        continue;
+      case DbgCommands::DisplayAllFrames:
+        display_all_frames(this->frames, "[ALL] ");
+        continue;
+    }
   }
-  fmt::print("\n\n");
 }
 
 void Debugger::time_machine_debug(Cpu *cpu, Memory *mem, const DecodeInfo &decoded) {
@@ -74,8 +76,7 @@ void Debugger::time_machine_debug(Cpu *cpu, Memory *mem, const DecodeInfo &decod
       case DbgCommands::DisplayContext:
           goto BREAK_SWITCH;
       case DbgCommands::Run:
-        for(;this->frame_iter != this->frames.end();++this->frame_iter) {
-        }
+        this->frame_iter = this->frames.end();
         this->is_debugging = false;
         goto BREAK_SWITCH;
       case DbgCommands::StepBack:
@@ -164,7 +165,7 @@ namespace {
       .mem = *mem,
       .decoded = decoded,
     };
-    if(frames.size() >= max_frames);
+    if(frames.size() >= max_frames)
       frames.erase(frames.begin());
     frames.push_back(f);
   }
