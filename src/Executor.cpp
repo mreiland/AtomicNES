@@ -2,6 +2,32 @@
 
 #include "error/unimplemented_error.h"
 
+#include <iostream>
+#include "fmt/format.h"
+
+//TODO: investigate to see if this wrapping behavior is correct.
+//      in this code the SP will continue growing and only wrap
+//      on reads and writes. Is that accurate?  Or does the SP
+//      value itself also wrap?
+namespace  {
+  void stack_push8(Cpu *cpu, Memory *mem, uint8_t val) {
+    mem->write8(0x100 | uint16_t(cpu->SP),val);
+    cpu->SP--;
+  }
+  uint8_t stack_pop8(Cpu *cpu, Memory *mem) {
+    cpu->SP++;
+    return mem->read8(0x100 | uint16_t(cpu->SP));
+  }
+  void stack_push16(Cpu *cpu, Memory *mem, uint16_t val) {
+    mem->write16(0x100 | uint16_t(cpu->SP),val);
+    cpu->SP-=2;
+  }
+  uint16_t stack_pop16(Cpu *cpu, Memory *mem) {
+    cpu->SP+=2;
+    return mem->read16(0x100 | uint16_t(cpu->SP));
+  }
+}
+
 namespace Executor {
   void reset(Cpu *cpu, Memory *mem) {
     cpu->PC = mem->read16(0xFFFD);
