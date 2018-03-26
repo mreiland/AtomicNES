@@ -5,6 +5,10 @@
 #include <iostream>
 #include "fmt/format.h"
 
+// NVUB DIZC
+// 0111 0100 -- correct log
+// 0111 1111
+
 //TODO: investigate to see if this wrapping behavior is correct.
 //      in this code the SP will continue growing and only wrap
 //      on reads and writes. Is that accurate?  Or does the SP
