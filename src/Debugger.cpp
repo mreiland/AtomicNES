@@ -122,14 +122,23 @@ namespace {
     if(decoded.instruction->len > 2) byte3 = fmt::format("${:>02X}",mem.read8(cpu.PC+2));
 
     // current PC, SP, registers, bit pattern of processor flags
-    fmt::print("{}-----------------------------------------------------------\n",prefix);
-    fmt::print("{}  OPCODE     |               |  SP  A   X   Y   P  NVUBDIZC\n",prefix);
-    fmt::print("{}${:>04X} {} {}| {:^3} {:^10}| ${:>02X} ${:>02X} ${:>02X} ${:>02X} ${:>02X} ",
+    fmt::print("{}---------------------------------------------------------------\n",prefix);
+    fmt::print("{}PC    OPCODE     |               |  SP  A   X   Y   P  NVUBDIZC\n",prefix);
+    fmt::print("{}${:>04X} ${:>02X} {} {}| {:^3} {:^10}| ${:>02X} ${:>02X} ${:>02X} ${:>02X} ${:>02X} ",
         prefix,
-        cpu.PC,byte2,byte3, to_string(decoded.instruction->operation),to_string(decoded.instruction->mode),
+        cpu.PC, mem.read8(cpu.PC), byte2,byte3, to_string(decoded.instruction->operation),to_string(decoded.instruction->mode),
         cpu.SP, cpu.a, cpu.x, cpu.y, cpu.get_flags());
     fmt::print("{}{}{}{}{}{}{}{}\n", (int)cpu.N,(int)cpu.V,(int)cpu.U,(int)cpu.B,(int)cpu.D,(int)cpu.I,(int)cpu.Z,(int)cpu.C);
-    fmt::print("{}-----------------------------------------------------------\n",prefix);
+    fmt::print("{}- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n",prefix);
+    fmt::print("{}", prefix);
+    uint8_t currSP = cpu.SP-1;
+    do {
+      currSP++;
+      fmt::print("${:>02X} ", mem.read8(0x100 | uint16_t(currSP)));
+    }
+    while(currSP != 0xFF);
+    
+    fmt::print("\n{}---------------------------------------------------------------\n",prefix);
   }
 
   void display_menu() {
