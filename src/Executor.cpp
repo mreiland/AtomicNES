@@ -165,7 +165,7 @@ namespace Executor {
       case Operation::PHA: throw error::unimplemented_error("PHA operation is not implemented"); break; 
       case Operation::PHP: {
         auto result = cpu->get_flags();
-        stack_push8(cpu,mem,result | 0x1F);
+        stack_push8(cpu,mem,result | 0x30);
         break;
       }
       case Operation::PLA:
