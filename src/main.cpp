@@ -31,7 +31,7 @@ int main() {
   Debugger dbg;
 
   try {
-    dbg.set_pc_breakpoint(0xC7F8);
+    dbg.set_pc_breakpoint(0xCE42);
 
     while(true) {
       Executor::fetch_and_decode(cpu, mem, &decoded);
