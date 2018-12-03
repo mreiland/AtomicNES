@@ -131,12 +131,23 @@ namespace {
     fmt::print("{}{}{}{}{}{}{}{}\n", (int)cpu.N,(int)cpu.V,(int)cpu.U,(int)cpu.B,(int)cpu.D,(int)cpu.I,(int)cpu.Z,(int)cpu.C);
     fmt::print("{}- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n",prefix);
     fmt::print("{}", prefix);
-    uint8_t currSP = cpu.SP-1;
-    do {
-      currSP++;
-      fmt::print("${:>02X} ", mem.read8(0x100 | uint16_t(currSP)));
+
+    auto columns = 15;
+    auto addr = 0xFF;
+
+    while(addr > cpu.SP) {
+      auto count = (addr - cpu.SP);
+      if(count > columns)
+        count = columns;
+
+      for(auto i = 0; i <= count && addr-i > cpu.SP; ++i)
+        fmt::print("${:>02X} ",addr-i);
+      fmt::print("\n");
+      for(auto i = 0; i <= count && addr-i > cpu.SP; ++i)
+        fmt::print(" {:>02X} ", mem.read8(0x100 | uint16_t(addr-i)));
+      fmt::print("\n\n");
+      addr-=columns+1;
     }
-    while(currSP != 0xFF);
     
     fmt::print("\n{}---------------------------------------------------------------\n",prefix);
   }
