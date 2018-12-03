@@ -23,12 +23,12 @@ namespace  {
     return mem->read8(0x100 | uint16_t(cpu->SP));
   }
   void stack_push16(Cpu *cpu, Memory *mem, uint16_t val) {
-    mem->write16(0x100 | uint16_t(cpu->SP),val);
+    mem->write16(0x100 | uint16_t(cpu->SP-1),val);
     cpu->SP-=2;
   }
   uint16_t stack_pop16(Cpu *cpu, Memory *mem) {
     cpu->SP+=2;
-    return mem->read16(0x100 | uint16_t(cpu->SP));
+    return mem->read16(0x100 | uint16_t(cpu->SP-1));
   }
 }
 
@@ -155,15 +155,27 @@ namespace Executor {
         cpu->compare(cpu->y, decoded.val1);
         break;
       case Operation::DEC: throw error::unimplemented_error("DEC operation is not implemented"); break; 
-      case Operation::DEX: throw error::unimplemented_error("DEX operation is not implemented"); break; 
-      case Operation::DEY: throw error::unimplemented_error("DEY operation is not implemented"); break; 
+      case Operation::DEX:
+        cpu->x--;
+        cpu->set_N(cpu->x);
+        cpu->set_Z(cpu->x);
+        break;
+      case Operation::DEY:
+        cpu->y--;
+        cpu->set_N(cpu->y);
+        cpu->set_Z(cpu->y);
+        break;
       case Operation::EOR:
         cpu->a = cpu->a ^ decoded.val1;
         cpu->set_N(cpu->a);
         cpu->set_Z(cpu->a);
         break;
       case Operation::INC: throw error::unimplemented_error("INC operation is not implemented"); break; 
-      case Operation::INX: throw error::unimplemented_error("INX operation is not implemented"); break; 
+      case Operation::INX:
+        cpu->x++;
+        cpu->set_N(cpu->x);
+        cpu->set_Z(cpu->x);
+        break;
       case Operation::INY:
         cpu->y++;
         cpu->set_N(cpu->y);
@@ -259,13 +271,34 @@ namespace Executor {
         mem->write8(decoded.addr1,cpu->x);
         break;
       case Operation::STY: throw error::unimplemented_error("STY operation is not implemented"); break; 
-      case Operation::TAX: throw error::unimplemented_error("TAX operation is not implemented"); break; 
-      case Operation::TAY: throw error::unimplemented_error("TAY operation is not implemented"); break; 
-      case Operation::TSX: throw error::unimplemented_error("TSX operation is not implemented"); break; 
-      case Operation::TXA: throw error::unimplemented_error("TXA operation is not implemented"); break; 
-      case Operation::TXS: throw error::unimplemented_error("TXS operation is not implemented"); break; 
-      case Operation::TYA: throw error::unimplemented_error("TYA operation is not implemented"); break; 
-
+      case Operation::TAX:
+        cpu->x = cpu->a;
+        cpu->set_N(cpu->x);
+        cpu->set_Z(cpu->x);
+        break;
+      case Operation::TAY:
+        cpu->y = cpu->a;
+        cpu->set_N(cpu->y);
+        cpu->set_Z(cpu->y);
+        break;
+      case Operation::TSX:
+        cpu->x = cpu->SP;
+        cpu->set_N(cpu->x);
+        cpu->set_Z(cpu->x);
+        break;
+      case Operation::TXA:
+        cpu->a = cpu->x;
+        cpu->set_N(cpu->a);
+        cpu->set_Z(cpu->a);
+        break;
+      case Operation::TXS:
+        cpu->SP = cpu->x;
+        break;
+      case Operation::TYA:
+        cpu->a = cpu->y;
+        cpu->set_N(cpu->a);
+        cpu->set_Z(cpu->a);
+        break;
       case Operation::None: throw "Operation::None was found, this should never happen!";
       default: throw "DEFAULT OPERATION HIT, THIS SHOULD NEVER HAPPEN";
     }
